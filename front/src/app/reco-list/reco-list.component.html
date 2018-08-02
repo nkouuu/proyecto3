@@ -1,0 +1,27 @@
+<app-sub-menu [category]="category"></app-sub-menu>
+<app-new-reco></app-new-reco>
+
+<div class="recos">
+  <div *ngFor="let reco of recos | categoryFilter :'category':category"  class="reco">
+      <p>{{reco.content}}-{{reco.category}}</p>
+      <div>
+        <ul>
+          <li *ngFor="let reply of reco.replies ">
+            {{reply.content}}
+          </li>
+        </ul>
+        <form action="">
+          Reply
+          <input type="text" #content name="reply">
+          <button (click)="rS.newReply(reco._id,content.value).subscribe()">Send</button>
+        </form>
+        <button (click)="rS.removeReco(reco._id).subscribe()">Remove</button>
+
+
+      </div>
+      {{reco.likes.length}}
+      <button (click)="likeReco(reco._id)" >
+        Like
+      </button>
+  </div>
+</div>
