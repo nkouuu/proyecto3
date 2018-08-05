@@ -11,25 +11,17 @@ router.post("/:id", (req, res, next) => {
     const reply = new Reply({content:req.body.content,author:req.user._id})
 
     reply.save().then(r=>{
-        Reco.findByIdAndUpdate(req.params.id,{$push:{replies:r._id}},{new:true}).then(reco => {
+        Reco.findByIdAndUpdate(req.params.id,{$push:{replies:r._id}},{new:true})
+        .populate("replies")
+        .populate("author")
+        .then(reco => {
             res.status(200).json(reco);
           });
     })
   
 });
 
-router.post("/:id", (req, res, next) => {
-  const { content } = req.body;
-  const newReco = new Reco({
-    author: req.user._id,
-    content,
-    category
-  });
 
-  newReco.save().then(reco => {
-    res.status(200).json(reco);
-  });
-});
 
 router.delete("/:id", (req, res, next) => {
   

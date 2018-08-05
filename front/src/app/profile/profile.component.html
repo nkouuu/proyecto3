@@ -1,5 +1,5 @@
 
-
+<button (click)="aS.sendFollow(sessionService.user._id,user._id)">followwwwwww</button>
   <div class="container">
     <div class="innerwrap">
       <section class="section1 clearfix">
@@ -9,7 +9,7 @@
               <img src="http://images.contactmusic.com/newsimages/david_beckham_1133321.jpg" alt="">
               <h1>{{user.name}}</h1>
               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-              <span>Follow</span>
+            <span (click)="unfollow(sessionService.user._id,user._id,$event)" id="followButton" *ngIf="user._id!=sessionService.user._id" >Follow</span>
             </div>
             <div class="col2 last">
               <div class="grid clearfix">
@@ -26,9 +26,9 @@
           </div>
           <div class="row clearfix">
             <ul class="row2tab clearfix">
-              <li><i class="fa fa-list-alt"></i> Recos </li>
-              <li><i class="fa fa-heart"></i>Likes </li>
-              <li><i class="fa fa-check"></i> Following </li>
+              <li (click)="changeSection('recos',$event)"><i class="fa fa-list-alt"></i> Recos </li>
+              <li (click)="changeSection('likes',$event)"><i class="fa fa-heart"></i>Likes </li>
+              <li (click)="changeSection('following',$event)"><i class="fa fa-check"></i> Following </li>
               <li><i class="fa fa-thumbs-o-up "></i> NEXT</li>
             </ul>
           </div>
@@ -38,7 +38,8 @@
         <i class="fa fa-star"></i>
         </span>
       </section>
-      <app-user-recos [user]="user"></app-user-recos>
+      <app-user-recos *ngIf="section!='following'" [user]="user" [section]="section"></app-user-recos>
+      <app-users-list *ngIf="section=='following'" [user]="user" ></app-users-list>
     </div>
   </div>	
   

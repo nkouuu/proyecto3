@@ -24,8 +24,8 @@ export class RecoListComponent implements OnInit {
       this.recos = recos;
 
       this.rS.recosChange.subscribe(r => {
-        this.recos = r;
-        //$( ".reco" ).fadeIn(1000)
+        
+        this.recos=r;
       });
     });
   }
@@ -33,7 +33,6 @@ export class RecoListComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       $(".categorySpan").each(e => {
-        console.log("iguales")
 
         if ($(this).text() == params["category"]) {
           $(this).parent().css({
@@ -47,12 +46,5 @@ export class RecoListComponent implements OnInit {
     
   }
 
-  likeReco(id) {
-    var reco = this.recos.find(e => e._id == id);
-    if (reco.likes.includes(this.sessionService.user._id)) {
-      this.rS.likeReco(id, "unlike").subscribe(reco => {});
-    } else {
-      this.rS.likeReco(id, "like").subscribe(reco => {});
-    }
-  }
+  
 }

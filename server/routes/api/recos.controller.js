@@ -7,6 +7,7 @@ const Reco = require("../../models/reco.model");
 router.get("/", (req, res, next) => {
   Reco.find({})
     .populate("replies")
+    .populate("author")
     .then(recos => {
       res.status(200).json(recos);
     });
@@ -15,6 +16,7 @@ router.get("/", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   Reco.findById(req.params.id)
     .populate("replies")
+    .populate("author")
     .then(reco => {
       res.status(200).json(reco);
     });
@@ -34,7 +36,10 @@ router.post("/", (req, res, next) => {
       req.user._id,
       { $push: { recos:   reco._id } },
       { new: true }
-    ).then(user => {
+    )
+    .populate("replies")
+    .populate("author")
+    .then(user => {
       res.status(200).json(reco);
     })
     .catch(err=>{
@@ -59,7 +64,10 @@ router.patch("/:id", (req, res, next) => {
     req.params.id,
     { content, category },
     { new: true }
-  ).then(reco => {
+  )
+  .populate("replies")
+  .populate("author")
+  .then(reco => {
     res.status(200).json(reco);
   });
 });
@@ -69,7 +77,10 @@ router.get("/:id/like", (req, res, next) => {
     req.params.id,
     { $push: { likes: req.user._id } },
     { new: true }
-  ).then(reco => {
+  )
+  .populate("replies")
+  .populate("author")
+  .then(reco => {
     User.findByIdAndUpdate(
       req.user._id,
       { $push: { likes: reco._id } },
@@ -85,7 +96,10 @@ router.get("/:id/unlike", (req, res, next) => {
     req.params.id,
     { $pull: { likes: { $in: [req.user._id] } } },
     { new: true }
-  ).then(reco => {
+  )
+  .populate("replies")
+  .populate("author")
+  .then(reco => {
     User.findByIdAndUpdate(
       req.user._id,
       { $pull: { likes: reco._id } },

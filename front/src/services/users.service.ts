@@ -17,7 +17,7 @@ const {BASEURL} = environment;
 export class UsersService {
 
   options:object = {withCredentials:true};
-  recosChange:EventEmitter<any> = new EventEmitter()
+  usersChange:EventEmitter<any> = new EventEmitter()
   constructor(private http:Http,private router:Router) {
       
   }
@@ -47,6 +47,30 @@ export class UsersService {
       catchError(e => {console.log("Error getting user"); return of(e)})
     );
   }
+
+
+  followUser(followerId,followedId){
+    return this.http.post(`${BASEURL}/api/users/follow/${followerId}/${followedId}`,this.options).pipe(
+        map( (res:Response) => {
+          console.log(`User followed successfully`);
+          this.usersChange.emit(res.json())
+          return res.json();
+        }),
+        catchError(e => {console.log("Error following user"); return of(e)})
+      );
+  }
+
+  unfollowUser(followerId,followedId){
+    return this.http.post(`${BASEURL}/api/users/unfollow/${followerId}/${followedId}`,this.options).pipe(
+        map( (res:Response) => {
+          console.log(`User unfollowed successfully`);
+          this.usersChange.emit(res.json())
+          return res.json();
+        }),
+        catchError(e => {console.log("Error unfollowing user"); return of(e)})
+      );
+  }
+
 
   /*newReco(content,category){
     return this.http.post(`${BASEURL}/api/recos`,{content,category},this.options).pipe(

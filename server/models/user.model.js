@@ -22,7 +22,9 @@ const UserSchema = new Schema(
     },
     recos: [{ type: Schema.Types.ObjectId, ref: "Reco" }],
 
-    likes: [{ type: Schema.Types.ObjectId, ref: "Reco" }]
+    likes: [{ type: Schema.Types.ObjectId, ref: "Reco" }],
+    followers:[{ type: Schema.Types.ObjectId, ref: "User" }],
+    following:[{ type: Schema.Types.ObjectId, ref: "User" }]
   },
   {
     usePushEach: true

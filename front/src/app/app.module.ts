@@ -20,7 +20,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SubMenuComponent } from './sub-menu/sub-menu.component';
 import { UserRecosComponent } from './user-recos/user-recos.component';
 import { UsersService } from '../services/users.service';
-
+import { UsersListComponent } from './users-list/users-list.component';
+import { RecoViewComponent } from './reco-view/reco-view.component';
+import {FileUploader} from 'ng2-file-upload'
+import { AlertsService } from '../services/alertsService.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { UsersService } from '../services/users.service';
     NavbarComponent,
     SubMenuComponent,
     UserRecosComponent,
+    UsersListComponent,
+    RecoViewComponent,
+    //FileUploader
 
   
   ],
@@ -45,7 +51,7 @@ import { UsersService } from '../services/users.service';
     FormsModule,
     
   ],
-  providers: [SessionService,RecosService,isLoggedGuardService,UsersService],
+  providers: [SessionService,RecosService,isLoggedGuardService,UsersService,AlertsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

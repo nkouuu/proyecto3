@@ -10,10 +10,11 @@ import { UsersService } from '../../services/users.service';
 })
 export class UserRecosComponent implements OnInit {
   @Input() user:any ={}
-  @Input() section:string="Recos"
+  @Input() section:string="recos"
   constructor(public sessionService:SessionService,public rS:RecosService,public uS:UsersService) { 
     this.rS.recosChange.subscribe(r=>{
-      this.user.recos=r.filter(e=>e.author==this.user._id);
+      this.user.recos=r.filter(e=>e.author._id==this.user._id);
+
       this.user.likes=r.filter(e=>e.likes.includes(this.user._id));
     })
   }

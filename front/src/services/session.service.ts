@@ -6,6 +6,7 @@ import {map, catchError} from 'rxjs/operators';
 import { Observable } from "../../node_modules/rxjs";
 import { of } from 'rxjs';
 import { Router } from "../../node_modules/@angular/router";
+import { UsersService } from "./users.service";
 
 
 const {BASEURL} = environment;
@@ -24,9 +25,10 @@ export class SessionService {
 
   options:object = {withCredentials:true};
 
-  constructor(private http:Http,private router:Router) {
+  constructor(private http:Http,private router:Router,public usersService:UsersService) {
     this.isLogged().subscribe(user=>{
       this.user=user;
+      this.usersService.usersChange.subscribe(u=>this.user=u)
     });
   }
 

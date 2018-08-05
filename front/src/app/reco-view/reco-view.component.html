@@ -1,0 +1,25 @@
+
+<div class="sections">
+<section id="user">
+    <div  class="user">
+        <img src="http://images.contactmusic.com/newsimages/david_beckham_1133321.jpg" alt="">
+      <h4>{{reco.author.username}}</h4>
+      <button id="followButton" (click)="unfollow(sessionService.user._id,reco.author._id,$event)">Follow</button>
+    </div>
+  
+</section>
+<section id="content">
+{{reco.content}}
+</section>
+<section id="replies">
+  <h4>Replies</h4>
+<div *ngFor="let reply of reco.replies">
+{{reply.content}}
+</div>
+<form action="">
+  <input type="text" #content>
+    <button (click)="newReply(reco._id,content.value)">Send</button>
+
+</form>
+</section>
+</div>

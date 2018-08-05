@@ -94,7 +94,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 .section1 .col2.first img {
 	border-radius: 50%;
 	margin: 0 20px;
-	width: 120px;
+	width: 150px;
 	border:2px solid #f1f1f1;
 	padding: 2px;
 	float: left;
@@ -117,14 +117,17 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	position: absolute;
     right: 15px;
     top: 16px;
-    background: rgb(33, 178, 204);
+    //background: rgb(33, 178, 204);
     padding: 5px 11px;
     font-size: 12px;
     line-height: 1;
     border-radius: 2px;
-    color: #fff;
+    //color: #fff;
   cursor:pointer;
 }
+
+
+
 
 .section1 .col2.last {
 	padding: 8px 0;
@@ -307,6 +310,19 @@ section.section2 {
 		}
 	}
 	
+}
+
+
+.followButton{
+    background: rgb(33, 178, 204);
+    color:white;
+
+}
+.unfollowButton{
+	background: white;
+	border:1px solid black;
+    color:black;
+
 }
 
 

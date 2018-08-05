@@ -1,23 +1,8 @@
 <div class="recos">
-  <div *ngFor="let reco of user.recos "  class="reco">
+  <div *ngFor="let reco of user[section] "  class="reco">
       <p>{{reco.content}}-{{reco.category}}</p>
-      <div>
-        <ul>
-          <li *ngFor="let reply of reco.replies ">
-            {{reply.content}}
-          </li>
-        </ul>
-        <form action="">
-          Reply
-          <input type="text" #content name="reply">
-          <button (click)="rS.newReply(reco._id,content.value).subscribe()">Send</button>
-        </form>
-        <button (click)="rS.removeReco(reco._id).subscribe()">Remove</button>
-
-
-      </div>
-      {{reco.likes.length}}
-      <button (click)="likeReco(reco._id)" >
+      <a href="" [routerLink]="['/recos','reco',reco._id]"><button>Replies</button></a>       {{reco.likes.length}}
+      <button (click)="rS.likeReco(reco._id).subscribe()" >
         Like
       </button>
   </div>
