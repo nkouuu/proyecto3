@@ -1,0 +1,71 @@
+.recos {
+  padding: 20px;
+}
+.recos > div {
+  margin: 10px;
+}
+.reco:hover{
+    box-shadow:  5px 5px rgba(134, 127, 139, 0.507);
+
+}
+.reco {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 2px 2px rgba(134, 127, 139, 0.507);
+  //animation: appear 1s 1
+    
+  .picture{
+      text-align: center;
+      margin:0;
+
+      img{
+            width: 80%;
+
+          
+
+      }
+  }
+  .video{
+      text-align: center;
+
+      iframe{
+          width: 80%;
+      }
+  }
+  .options{
+
+        display:flex;
+        justify-content: space-between;
+      > *{
+          display:inline-block;
+      }
+  }
+}
+.liked {
+  background: red;
+}
+
+.show {
+  opacity: 1 !important;
+}
+.step {
+  opacity: 0;
+  transition: 0.5s ease-in-out all;
+}
+
+button{
+    border:0;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}

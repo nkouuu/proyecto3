@@ -1,0 +1,33 @@
+<app-sub-menu [category]="category"></app-sub-menu>
+<app-new-reco></app-new-reco>
+
+<div class="recos">
+  <div *ngFor="let reco of recos | categoryFilter :'category':category" class="reco">
+    <a href="" [routerLink]="['/profile',reco.author._id]">{{reco.author.username}}</a>
+    <p>{{reco.content}}-{{reco.category}}</p>
+    <div class="picture">
+      <img src="{{reco.pictures[0]}}" alt="">
+
+    </div>
+    <div *ngIf="reco.video" class="video">
+      <iframe src="https://www.youtube.com/embed/UrIbxk7idYA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="options">
+        <div (click)="likeReco(sessionService.user._id,reco.author._id,reco._id)">
+            <span>{{reco.likes.length}}</span>
+              <i *ngIf="reco.likes.includes(sessionService.user._id)" class="far fa-star" style="color:orange"></i>
+              <i *ngIf="!reco.likes.includes(sessionService.user._id)" class="far fa-star" ></i>
+      
+      
+          </div>
+          <div [routerLink]="['/recos','reco',reco._id]">
+            <span>{{reco.replies.length}}</span>
+
+              <i class="far fa-comments"></i>
+      
+          </div>
+    </div>
+    
+
+  </div>
+</div>

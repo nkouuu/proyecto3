@@ -1,0 +1,50 @@
+body{
+    text-align: center;
+}
+.sections {
+    display:inline-block;
+    border:2px solid rgb(29, 215, 240);
+    border-radius: 5px;
+    margin:20px 17vw;
+    width: 65vw;
+    > *{
+        padding:20px;
+        margin:10px;
+
+    }
+    #replies{
+        border:1px solid rgb(179, 173, 173);
+    }
+}
+    .user {
+      text-align: center;
+      border-left:10px solid blueviolet;
+      border-bottom: 1px solid rgb(175, 171, 171);
+      padding:10px;
+      margin:10px;
+      img {
+          border-radius: 50%;
+          margin: 0 20px;
+          width: 80px;
+          border:2px solid #f1f1f1;
+          padding: 2px;
+      }
+      button{
+          border-radius:5px;
+      }
+      > *{
+          display: inline-block;
+          margin-right: 5vw;
+      }
+    }
+  
+  
+  .followButton{
+      background: rgb(33, 178, 204);
+      color:white;
+  
+  }
+  .unfollowButton{
+      background: white;
+        color:black
+  }

@@ -1,0 +1,17 @@
+.submenu{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: middle;
+
+
+    .pestaña{
+        width: 20%;
+        height: 5vh;
+        text-align: center;
+        border:1px solid blueviolet;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+
+    }
+}
