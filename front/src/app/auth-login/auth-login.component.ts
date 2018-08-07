@@ -8,8 +8,10 @@ import { SessionService } from '../../services/session.service';
 })
 export class AuthLoginComponent implements OnInit {
 
-
-  constructor(private sessionService:SessionService) { }
+  password
+  username
+  
+  constructor(public sessionService:SessionService) { }
 
   ngOnInit() {
   }

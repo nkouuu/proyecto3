@@ -16,7 +16,7 @@ export class EditProfileComponent implements OnInit {
   });
   feedback;
 
-  userEdit: Object = {
+  userEdit: any = {
     username:"",
     email:"",
     name: '',

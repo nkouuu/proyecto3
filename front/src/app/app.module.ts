@@ -22,7 +22,7 @@ import { UserRecosComponent } from './user-recos/user-recos.component';
 import { UsersService } from '../services/users.service';
 import { UsersListComponent } from './users-list/users-list.component';
 import { RecoViewComponent } from './reco-view/reco-view.component';
-import {FileUploader, FileSelectDirective} from 'ng2-file-upload'
+import {FileUploader, FileSelectDirective, FileUploadModule} from 'ng2-file-upload'
 import { AlertsService } from '../services/alertsService.service';
 import {SnotifyModule, SnotifyService, ToastDefaults} from '../../node_modules/ng-snotify';
 import { NotificationsComponent } from './notifications/notifications.component';
@@ -44,7 +44,7 @@ import { EditRecoComponent } from './edit-reco/edit-reco.component'
     UsersListComponent,
     RecoViewComponent,
     NotificationsComponent,
-    FileSelectDirective,
+    //FileSelectDirective,
     EditProfileComponent,
     EditRecoComponent
     //FileUploader
@@ -56,7 +56,8 @@ import { EditRecoComponent } from './edit-reco/edit-reco.component'
     HttpModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    SnotifyModule
+    SnotifyModule,
+    FileUploadModule
 
     
   ],
