@@ -32,6 +32,18 @@
 
         </select>
       </div>
-      <button (click)="rS.newReco(content,category.value).subscribe();toggleHide(1)">Add</button>
+
+      <div class="form-group">
+
+          <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+
+          </div>
+          <div class="form-group">
+
+              <input type="text" name="video"  [(ngModel)]="video" placeholder="Trailer url..."/>
+    
+              </div>
+
+      <button (click)="newReco(content,category.value,video);toggleHide(1)">Add</button>
     </form>
   </div>

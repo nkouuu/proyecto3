@@ -11,7 +11,7 @@ import { AlertsService } from "../../services/alertsService.service";
   styleUrls: ["./profile.component.scss"]
 })
 export class ProfileComponent implements OnInit {
-  user: any = {recos:"",likes:""};
+  user: any = {recos:"",likes:"",followers:[]};
   section:string ="recos"
   recos: any = [];
   likes:any =[]
@@ -64,10 +64,12 @@ unfollow(followerId, followedId, event) {
 
       });
     }else if(text=="Follow"){
+      console.log("followbutton")
       this.uS.followUser(followerId, followedId).subscribe(u => {
         button.text("Unfollow")
         button.removeClass("followButton")
         button.addClass("unfollowButton")
+        this.aS.sendFollow(followerId, followedId)
 
       });
     }

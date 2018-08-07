@@ -1,9 +1,18 @@
 <div class="recos">
   <div *ngFor="let reco of user[section] "  class="reco">
       <p>{{reco.content}}-{{reco.category}}</p>
-      <a href="" [routerLink]="['/recos','reco',reco._id]"><button>Replies</button></a>       {{reco.likes.length}}
-      <button (click)="rS.likeReco(reco._id).subscribe()" >
-        Like
+      
+      <button (click)="likeReco(sessionService.user._id,reco.author._id,reco._id)">
+          <i *ngIf="reco.likes.includes(sessionService.user._id)" class="far fa-star" style="color:orange"></i>
+          <i *ngIf="!reco.likes.includes(sessionService.user._id)" class="far fa-star" ></i>
+  
+  
       </button>
+      <a [routerLink]="['/recos','reco',reco._id]">
+        <button>
+          <i class="far fa-comments"></i>
+  
+        </button>
+      </a>      
   </div>
 </div>

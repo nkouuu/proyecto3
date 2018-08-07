@@ -21,7 +21,7 @@ interface UserObject{
 export class SessionService {
 
 
-  user:any=null;
+  user:any={notifications:[],followers:[]};
 
   options:object = {withCredentials:true};
 
@@ -80,6 +80,7 @@ export class SessionService {
     return this.http.get(`${BASEURL}/api/logout`,this.options).pipe(
       map( (res:Response) => {
         this.user = null;
+        this.usersService.usersChange.emit(null)
         this.router.navigate(["/"])
 
       }),

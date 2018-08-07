@@ -9,27 +9,29 @@
         <a href="#" class="nav-link" [routerLink]="['/recos','Movie']">Movie</a>
       </li>
     </ul>-->
-  
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li *ngIf="sessionService.user" class="nav-item">
-          <a href="#" class="nav-link" (click)="sessionService.logout().subscribe()">Logout</a>
-        </li>
-        <li *ngIf="sessionService.user" class="nav-item">
-          <a href="#" class="nav-link" [routerLink]="['/profile',sessionService.user._id]">Profile</a>
-        </li>
-        <li *ngIf="!sessionService.user" class="nav-item">
+    
+        <div  class="profile" *ngIf="sessionService.user" >
+          <app-notifications class="bell" *ngIf="sessionService.user" >Hola</app-notifications>
+          <div [routerLink]="['/profile',sessionService.user._id]">
+              <img src="{{sessionService.user.picture}}" alt="" >
+
+          </div>
+
+          <a href="#" class="nav-link"  *ngIf="sessionService.user" (click)="sessionService.logout().subscribe()"><i class="fas fa-power-off" style="color:rgb(26, 22, 22)"></i>
+
+          </a>
+
+        </div>
+   
+      <ul class="logOptions" *ngIf="!sessionService.user">
+        
+        <li class="nav-item">
           <a [routerLink]="['/signup']" class="nav-link">Signup</a>
         </li>
-        <li *ngIf="!sessionService.user" class="nav-item">
+        <li class="nav-item">
           <a [routerLink]="['/login']" class="nav-link">Login</a>
         </li>
   
       </ul>
-    </div>
+    
   </nav>

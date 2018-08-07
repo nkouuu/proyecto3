@@ -3,6 +3,7 @@ import { RecosService } from "../../services/recos.service";
 import { SessionService } from "../../services/session.service";
 import { ActivatedRoute } from "../../../node_modules/@angular/router";
 import * as $ from "jquery";
+import { AlertsService } from "../../services/alertsService.service";
 
 @Component({
   selector: "app-reco-list",
@@ -15,7 +16,8 @@ export class RecoListComponent implements OnInit {
   constructor(
     public rS: RecosService,
     public sessionService: SessionService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public aS:AlertsService
   ) {
     this.route.params.subscribe(params => {
       if (params["category"]) this.category = params["category"];
@@ -44,6 +46,19 @@ export class RecoListComponent implements OnInit {
       
     });
     
+  }
+
+  likeReco(liker,liked,id){
+    
+    var reco = this.rS.recos.find(e => e._id == id);
+    var type =""
+    if(reco.likes.includes(this.sessionService.user._id)){
+      type="unlike"
+    }else{
+      type="like"
+    }
+    this.rS.likeReco(type,id).subscribe(r=>{if(type=="like")this.aS.sendLike(this.sessionService.user._id,reco.author._id,reco._id)});
+
   }
 
   

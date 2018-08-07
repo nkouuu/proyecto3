@@ -7,17 +7,19 @@ function configure(passport) {
     done(null, user.id);
   });
 
-  passport.deserializeUser((id, done) => {
-    User.findById(id, function(err, user) {
-      done(err, user);
-    });
+  passport.deserializeUser((id, next) => {
+    User.findById(id)
+      .populate("notifications.userId")
+      .then(user => next(false, user))
+      .catch(err => next(err, false));
   });
 
   passport.use(
     new LocalStrategy((username, password, next) => {
       User.findOne({ username })
+        .populate("notifications.userId")
         .then(user => {
-          console.log(user)
+          console.log(user);
           if (!user) {
             return next(null, false, { message: "Incorrect username" });
           }

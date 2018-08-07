@@ -16,7 +16,7 @@
 
 	}
 	ul li{
-		width: 25%;
+		width: 30%;
 		background: transparent;
 
 	}
@@ -92,7 +92,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 
 
 .section1 .col2.first img {
-	border-radius: 50%;
+	border-radius: 10%;
 	margin: 0 20px;
 	width: 150px;
 	border:2px solid #f1f1f1;
@@ -152,7 +152,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 .row2tab li {
     list-style: none;
     float: left;
-    width: 25%;
+    width: 30%;
     padding: 15px;
     font-size: 14px;
     text-align: center;
@@ -174,12 +174,12 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 }
 
 .smalltri {
-	    border-right: 40px solid rgb(33, 178, 204);
+	    /*border-right: 40px solid rgb(33, 178, 204);
     height: 0;
     width: 0;
     border-left: 20px solid transparent;
     border-top: 10px solid rgb(33, 178, 204);
-    border-bottom: 20px solid transparent;
+    border-bottom: 20px solid transparent;*/
     padding: 0px;
     top: 0;
     right: 0;
@@ -188,10 +188,10 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 .smalltri i {
     position: absolute;
     top: -5px;
-    right: -33px;
-    color: #fff;
+    right: 0px;
+    color: rgb(7, 7, 7);
     border: 0px;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 section.section2 {
@@ -325,4 +325,25 @@ section.section2 {
 
 }
 
+.morph {
+	
+  }
+   
+  .morph:hover {
+	
+  }
+
+  @keyframes morph {
+	0%{
+		border-radius: 0%;
+	} 
+	50% {
+		border-radius: 25%;
+
+	}
+	100% {
+		border-radius: 50%;
+	}
+	
+  }
 

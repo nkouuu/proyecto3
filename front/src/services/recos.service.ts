@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 import { Router } from "../../node_modules/@angular/router";
 import * as _ from "lodash"
 import { SessionService } from "./session.service";
+import { AlertsService } from "./alertsService.service";
 
 const {BASEURL} = environment;
 
@@ -57,7 +58,6 @@ export class RecosService {
   newReco(content,category){
     return this.http.post(`${BASEURL}/api/recos`,{content,category},this.options).pipe(
       map( (res:Response) => {
-        console.log(this.recos)
 
         this.getRecos().subscribe(recos=>{
           this.recos=recos
@@ -65,7 +65,7 @@ export class RecosService {
 
         })
         console.log(`Reco added successfully`);
-        return this.recos;
+        return res.json();
       }),
       catchError(e => {console.log("Error adding reco"); return of(e)})
     );
@@ -95,7 +95,7 @@ export class RecosService {
     );
   }
 
-  newReply(id,content){
+  newReply(replier,replied,id,content){
     return this.http.post(`${BASEURL}/api/replies/${id}`,{content},this.options).pipe(
         map( (res:Response) => {
           this.getRecos().subscribe(recos=>{
@@ -109,15 +109,8 @@ export class RecosService {
       );
   }
 
-  likeReco(id){
+  likeReco(type,id){
     
-      var reco = this.recos.find(e => e._id == id);
-      var type =""
-      if(reco.likes.includes(this.sessionService.user._id)){
-        type="unlike"
-      }else{
-        type="like"
-      }
     return this.http.get(`${BASEURL}/api/recos/${id}/${type}`,this.options).pipe(
       map( (res:Response) => {
         this.getRecos().subscribe(recos=>{

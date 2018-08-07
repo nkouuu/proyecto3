@@ -1,0 +1,44 @@
+<li class="dropdown">
+  <!--(click)="this.uS.cleanNotifications(this.sessionService.user._id).subscribe()"-->
+  
+  <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" class="bell">
+    <span *ngIf="notifications.length>0" class="notificationsNumber">{{notifications.length}}</span>
+    <i class="fas fa-bell"></i>
+  </a>
+
+  <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+
+    <div class="notification-heading">
+      <h4 class="menu-title">Notifications</h4>
+      <button (click)="uS.cleanNotifications(sessionService.user._id).subscribe()">
+        <i class="far fa-check-circle"></i>
+
+      </button>
+    </div>
+    <div class="notifications-wrapper">
+        <a class="content"  *ngFor="let notify of notifications"  (click)="navigate(notify)" >
+          <div class="notification-item" *ngIf="notify.notificationType!='follow'">
+            <img src="http://www.leapcms.com/images/100pixels1.gif">
+            <h4 class="item-title">{{notify.notificationType}}
+              <small> 1 day ago</small>
+            </h4>
+            <p class="item-info">{{notify.userId.username}}</p>
+          </div>
+          <div class="notification-item" *ngIf="notify.notificationType=='follow'">
+              <img src="http://www.leapcms.com/images/100pixels1.gif">
+              <h4 class="item-title">{{notify.notificationType}}
+                <small> 20 day ago</small>
+              </h4>
+              <p class="item-info">{{notify.userId.username}}</p>
+            </div>
+        </a>
+      
+
+
+
+
+
+
+    </div>
+  </ul>
+</li>

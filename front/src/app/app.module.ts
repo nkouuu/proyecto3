@@ -22,9 +22,12 @@ import { UserRecosComponent } from './user-recos/user-recos.component';
 import { UsersService } from '../services/users.service';
 import { UsersListComponent } from './users-list/users-list.component';
 import { RecoViewComponent } from './reco-view/reco-view.component';
-import {FileUploader} from 'ng2-file-upload'
+import {FileUploader, FileSelectDirective} from 'ng2-file-upload'
 import { AlertsService } from '../services/alertsService.service';
-
+import {SnotifyModule, SnotifyService, ToastDefaults} from '../../node_modules/ng-snotify';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditRecoComponent } from './edit-reco/edit-reco.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +43,10 @@ import { AlertsService } from '../services/alertsService.service';
     UserRecosComponent,
     UsersListComponent,
     RecoViewComponent,
+    NotificationsComponent,
+    FileSelectDirective,
+    EditProfileComponent,
+    EditRecoComponent
     //FileUploader
 
   
@@ -49,9 +56,11 @@ import { AlertsService } from '../services/alertsService.service';
     HttpModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    SnotifyModule
+
     
   ],
-  providers: [SessionService,RecosService,isLoggedGuardService,UsersService,AlertsService],
+  providers: [SessionService,RecosService,isLoggedGuardService,UsersService,AlertsService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},SnotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

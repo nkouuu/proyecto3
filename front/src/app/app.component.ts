@@ -3,6 +3,9 @@ import { SessionService } from '../services/session.service';
 import { RecosService } from '../services/recos.service';
 import { Router } from '../../node_modules/@angular/router';
 import * as $ from 'jquery'
+import { AlertsService } from '../services/alertsService.service';
+import {SnotifyService, SnotifyPosition, SnotifyToastConfig} from 'ng-snotify';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +14,7 @@ import * as $ from 'jquery'
 export class AppComponent {
   title = 'front';
 
-  constructor(public sessionService:SessionService,public rS:RecosService,public router:Router){
+  constructor(public sessionService:SessionService,public rS:RecosService,public router:Router,public aS:AlertsService,){
  }
 
  home(){

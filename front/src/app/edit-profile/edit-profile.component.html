@@ -1,0 +1,48 @@
+<div  id="LoginForm">
+    <div class="container">
+  
+    <div class="login-form">
+    <div class="main-div">
+        <div class="panel">
+       <h2> Edit profile</h2>
+       </div>
+        <form id="Login">
+
+            <div class="form-group">
+
+            <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+
+            </div>
+
+            <div class="form-group">
+    
+    
+                <input type="text" class="form-control" [(ngModel)]="userEdit.username"  name="username" placeholder="Username">
+    
+            </div>
+    
+            <div class="form-group">
+    
+                <input type="password" class="form-control"  [(ngModel)]="userEdit.password" name="password" id="inputPassword" placeholder="Password">
+    
+            </div>
+            <div class="form-group">
+    
+                <input type="text" class="form-control"  [(ngModel)]="userEdit.email"  name="email" placeholder="Email">
+    
+            </div>
+            <div class="form-group">
+    
+                    <input type="text" class="form-control"  [(ngModel)]="userEdit.name"  name="name" placeholder="Name">
+        
+                </div>
+                
+            
+            <div class="forgot">
+    </div>
+            <button type="submit" (click)="editUser(userEdit)" class="btn btn-primary">Save</button>
+    
+        </form>
+        </div>
+    </div></div>
+</div>

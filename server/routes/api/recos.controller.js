@@ -1,11 +1,16 @@
+require("dotenv").config();
+const _ = require('lodash');
+
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 const User = require("../../models/user.model");
 const Reco = require("../../models/reco.model");
+const multer = require("multer");
+const uploadCloud = require('../../config/cloudinary.js');
 
 router.get("/", (req, res, next) => {
-  Reco.find({})
+  Reco.find({}).sort({updatedAt:-1})
     .populate("replies")
     .populate("author")
     .then(recos => {
@@ -22,16 +27,18 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
-router.post("/", (req, res, next) => {
-  const { content, category } = req.body;
+router.post("/", uploadCloud.single('file'),(req, res, next) => {
+  const { content, category,video } = req.body;
   const newReco = new Reco({
     author: req.user._id,
     content,
-    category
+    category,
+    pictures:req.file.url,
+    video
   });
 
-  newReco.save().then(reco => {
-    console.log(reco)
+  newReco.save()
+  .then(reco => {
     User.findByIdAndUpdate(
       req.user._id,
       { $push: { recos:   reco._id } },
@@ -50,6 +57,38 @@ router.post("/", (req, res, next) => {
   .catch(err=>{
     console.log("Failing adding reco")
   })
+});
+
+router.patch("/:id", uploadCloud.fields([{name:'file'},{name:'video'}]),(req, res, next) => {
+  console.log(req.files)
+  res.status(200).json({})
+  /*const { content, category } = req.body;
+  const newReco = new Reco({
+    author: req.user._id,
+    content,
+    category
+  });
+
+  newReco.save()
+  .then(reco => {
+    User.findByIdAndUpdate(
+      req.user._id,
+      { $push: { recos:   reco._id } },
+      { new: true }
+    )
+    .populate("replies")
+    .populate("author")
+    .then(user => {
+      res.status(200).json(reco);
+    })
+    .catch(err=>{
+      console.log(err)
+      console.log("Failed adding reco to users recos")
+    })
+  })
+  .catch(err=>{
+    console.log("Failing adding reco")
+  })*/
 });
 
 router.delete("/:id", (req, res, next) => {

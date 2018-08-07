@@ -41,11 +41,14 @@ export class UsersService {
     return this.http.get(`${BASEURL}/api/users/${id}`,this.options).pipe(
       map( (res:Response) => {
         console.log(`User obteined successfully`);
-        console.log(res.json())
         return res.json();
       }),
       catchError(e => {console.log("Error getting user"); return of(e)})
     );
+  }
+
+  editUser(user){
+      
   }
 
 
@@ -71,74 +74,18 @@ export class UsersService {
       );
   }
 
-
-  /*newReco(content,category){
-    return this.http.post(`${BASEURL}/api/recos`,{content,category},this.options).pipe(
-      map( (res:Response) => {
-        console.log(this.recos)
-
-        this.getRecos().subscribe(recos=>{
-          this.recos=recos
-          this.recosChange.emit(recos)
-
-        })
-        console.log(`Reco added successfully`);
-        return this.recos;
-      }),
-      catchError(e => {console.log("Error adding reco"); return of(e)})
-    );
-  }
-
-  removeReco(id){
-    return this.http.delete(`${BASEURL}/api/recos/${id}`,this.options).pipe(
-      map( (res:Response) => {
-        this.recos = this.recos.filter(e=>e._id!=id);
-        this.recosChange.emit(this.recos)
-        return this.recos
-      }),
-      catchError(e => {console.log("Error getting reco"); return of(e)})
-    );
-  }
-  editReco(id,content,category){
-    return this.http.patch(`${BASEURL}/api/recos/${id}`,{content,category},this.options).pipe(
-      map( (res:Response) => {
-          var reco = res.json()
-          this.recos.forEach(e => {
-              if(e._id==reco._id) e = reco;
-          });
-        
-        return reco
-      }),
-      catchError(e => {console.log("Error getting reco"); return of(e)})
-    );
-  }
-
-  newReply(id,content){
-    return this.http.post(`${BASEURL}/api/replies/${id}`,{content},this.options).pipe(
+  cleanNotifications(userId,notificationId){
+      var rest=""
+      if(notificationId) rest="/" + notificationId;
+    return this.http.patch(`${BASEURL}/api/users/cleanNotifications/${userId}${rest}`,this.options).pipe(
         map( (res:Response) => {
-          this.getRecos().subscribe(recos=>{
-            this.recos=recos
-            this.recosChange.emit(recos)
-          })
-          console.log(`Reply added successfully`);
-          return this.recos;
+          console.log(`Clean notifications successfully`);
+          this.usersChange.emit(res.json())
+          return res.json();
         }),
-        catchError(e => {console.log("Error adding reply"); return of(e)})
+        catchError(e => {console.log("Error cleaning notifications"); return of(e)})
       );
   }
-
-  likeReco(id,type:string){
-    return this.http.get(`${BASEURL}/api/recos/${id}/${type}`,this.options).pipe(
-      map( (res:Response) => {
-        this.getRecos().subscribe(recos=>{
-          console.log(`${type} successfully`);
-          this.recosChange.emit(recos)
-          return recos;
-        })
-        
-      }),
-      catchError(e => {console.log(`Error ${type}ing reco`); return of(e)})
-    );
-  }*/
+  
 
 }

@@ -3,6 +3,8 @@ import { RecosService } from '../../services/recos.service';
 import { ActivatedRoute } from '../../../node_modules/@angular/router';
 import { UsersService } from '../../services/users.service';
 import { SessionService } from '../../services/session.service';
+import { AlertsService } from '../../services/alertsService.service';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-reco-view',
@@ -11,16 +13,21 @@ import { SessionService } from '../../services/session.service';
 })
 export class RecoViewComponent implements OnInit {
   reco:any ={author:""}
-  constructor(public rS:RecosService,public route:ActivatedRoute,public uS:UsersService,public sessionService:SessionService) {
+  constructor(public rS:RecosService,public route:ActivatedRoute,public uS:UsersService,public sessionService:SessionService,public aS:AlertsService) {
     this.route.params.subscribe(params=>{
       this.rS.getReco(params["id"]).subscribe(r=>this.reco=r)
+      this.rS.recosChange.subscribe(r=>{
+        var reco=r.find(e=>e._id==this.reco._id)
+        if(reco){
+        this.reco=reco
+        }
+      })
     })
    }
 
   ngOnInit() {
     setTimeout(()=>{
        if(this.sessionService.user.following.includes(this.reco.author._id)){
-         console.log("entra2")
          
 
          $("#followButton").addClass("unfollowButton")
@@ -32,10 +39,9 @@ export class RecoViewComponent implements OnInit {
      },100)
   }
 
-  newReply(id,content){
-    console.log(content)
-    console.log(this.reco)
-    this.rS.newReply(id,content).subscribe(r=>{
+  newReply(replier,replied,id,content){
+    this.rS.newReply(replier,replied,id,content).subscribe(r=>{
+      this.aS.sendReply(replier,replied,id)
       this.reco=r
     })
   }
@@ -56,9 +62,15 @@ export class RecoViewComponent implements OnInit {
         button.removeClass("followButton")
 
         button.addClass("unfollowButton")
+        this.aS.sendFollow(followerId,followedId)
+
       });
     }
     
+  }
+
+  edit(){
+    $(".edit").toggleClass("d-none")
   }
 
 }

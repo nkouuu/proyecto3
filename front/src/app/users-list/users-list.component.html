@@ -1,6 +1,6 @@
 <div class="users"> 
   <div *ngFor="let u of user.following" class="user">
-      <img src="http://images.contactmusic.com/newsimages/david_beckham_1133321.jpg" alt="">
+      <img src={{u.picture}} alt="">
     <h4>{{u.username}}</h4>
     <button (click)="unfollow(sessionService.user._id,u._id,$event)">Unfollow</button>
   </div>

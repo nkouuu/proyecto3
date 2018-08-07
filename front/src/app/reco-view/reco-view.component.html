@@ -1,10 +1,12 @@
 
 <div class="sections">
+    <a (click)="edit()"><button>Edit</button></a>
+
 <section id="user">
     <div  class="user">
-        <img src="http://images.contactmusic.com/newsimages/david_beckham_1133321.jpg" alt="">
+        <img src={{reco.author.picture}} alt="">
       <h4>{{reco.author.username}}</h4>
-      <button id="followButton" (click)="unfollow(sessionService.user._id,reco.author._id,$event)">Follow</button>
+      <button id="followButton" *ngIf="sessionService.user._id!=reco.author._id" (click)="unfollow(sessionService.user._id,reco.author._id,$event)">Follow</button>
     </div>
   
 </section>
@@ -17,9 +19,10 @@
 {{reply.content}}
 </div>
 <form action="">
-  <input type="text" #content>
-    <button (click)="newReply(reco._id,content.value)">Send</button>
+  <input type="text" #content required>
+    <button (click)="newReply(this.sessionService.user._id,reco.author._id,reco._id,content.value);content.value=''">Send</button>
 
 </form>
 </section>
+<app-edit-reco [reco]="reco" class="edit d-none"></app-edit-reco>
 </div>
