@@ -58,7 +58,7 @@ app.use(layouts);
 const index = require('./routes/index');
 app.use('/api', index);
 app.get('*',(req,res) => {
-  res.sendFile('./public/index.html');
+  res.sendFile(__dirname+'/public/index.html');
 })
 
 // catch 404 and forward to error handler
