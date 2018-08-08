@@ -3,7 +3,8 @@ import { UsersService } from '../../services/users.service';
 import { FileUploader } from '../../../node_modules/ng2-file-upload';
 import { Router } from '../../../node_modules/@angular/router';
 import { SessionService } from '../../services/session.service';
-
+import { environment} from '../../environments/environment';
+const {BASEURL} = environment
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -11,7 +12,7 @@ import { SessionService } from '../../services/session.service';
 })
 export class EditProfileComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
-    url: `https://recoih.herokuapp.com/api/users`,
+    url: `${BASEURL}/api/users`,
     method: 'POST'
   });
   feedback;

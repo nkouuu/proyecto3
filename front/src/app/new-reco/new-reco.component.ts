@@ -5,6 +5,9 @@ import * as $ from "jquery";
 import { AlertsService } from "../../services/alertsService.service";
 import { FileUploader } from "../../../node_modules/ng2-file-upload";
 import { Router } from "../../../node_modules/@angular/router";
+import { environment} from '../../environments/environment';
+const {BASEURL} = environment
+
 @Component({
   selector: "app-new-reco",
   templateUrl: "./new-reco.component.html",
@@ -12,7 +15,7 @@ import { Router } from "../../../node_modules/@angular/router";
 })
 export class NewRecoComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
-    url: `https://recoih.herokuapp.com/api/recos`,
+    url: `${BASEURL}/api/recos`,
     method: "POST"
   });
   feedback;
