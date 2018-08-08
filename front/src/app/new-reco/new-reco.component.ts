@@ -12,7 +12,7 @@ import { Router } from "../../../node_modules/@angular/router";
 })
 export class NewRecoComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
-    url: `http://localhost:3000/api/recos`,
+    url: `https://recoih.herokuapp.com/api/recos`,
     method: "POST"
   });
   feedback;

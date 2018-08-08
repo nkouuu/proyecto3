@@ -11,7 +11,7 @@ import { SessionService } from '../../services/session.service';
 })
 export class EditProfileComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
-    url: `http://localhost:3000/api/users`,
+    url: `https://recoih.herokuapp.com/api/users`,
     method: 'POST'
   });
   feedback;
