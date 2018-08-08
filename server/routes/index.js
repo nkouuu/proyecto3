@@ -3,6 +3,6 @@ const router  = express.Router();
 
 const apiRoutes = require('./api/index.controller');
 
-router.use('/api', apiRoutes);
+router.use('/', apiRoutes);
 
   module.exports = router;
