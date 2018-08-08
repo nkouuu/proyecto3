@@ -21,7 +21,7 @@ export class AlertsService {
     public rS: RecosService
   ) {
     // Connect to websocket for chat
-    this.socket = io("localhost:3000");
+    this.socket = io("recoih.herokuapp.com");
     this.socket.on("connect", () => {
       this.sessionService.isLogged().subscribe(user => {
         if (user) {
