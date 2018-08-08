@@ -1,7 +1,8 @@
 import {
   CanActivate,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot
+  RouterStateSnapshot,
+  Router
 } from "../../node_modules/@angular/router";
 import { SessionService } from "./session.service";
 import { map } from "../../node_modules/rxjs/operators";
@@ -10,15 +11,19 @@ import { Observable } from "../../node_modules/rxjs";
 
 @Injectable()
 export class isLoggedGuardService implements CanActivate {
-  constructor(public sessionService: SessionService) {}
+  constructor(public sessionService: SessionService,public router:Router) {}
 
   canActivate(
-    route: ActivatedRouteSnapshot,
+     route: ActivatedRouteSnapshot,
     router: RouterStateSnapshot
   ): Observable<boolean> {
     return this.sessionService.isLogged().pipe(
       map(user => {
-        if(user) return true;else return false;
+        if(user) return true;else{
+          this.router.navigate(['/login'])
+          .then(()=>console.log("navigated to home on guard"))
+          return false
+        }
       })
     );
   }

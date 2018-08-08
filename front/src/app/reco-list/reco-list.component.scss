@@ -1,18 +1,23 @@
 .recos {
   padding: 20px;
+  text-align: center;
 }
 .recos > div {
   margin: 10px;
+  display:inline-block;
 }
 .reco:hover{
-    box-shadow:  5px 5px rgba(134, 127, 139, 0.507);
+    box-shadow:  10px 10px 10px  rgba(134, 127, 139, 0.281);
 
 }
 .reco {
   border: 1px solid black;
   border-radius: 5px;
   padding: 5px;
-  box-shadow: 2px 2px rgba(134, 127, 139, 0.507);
+  box-shadow: 2px 2px rgba(8, 8, 8, 0.507);
+  width: 90%;
+  max-width: 600px;
+
   //animation: appear 1s 1
     
   .picture{
@@ -39,6 +44,13 @@
         justify-content: space-between;
       > *{
           display:inline-block;
+
+          > *{
+            margin:2px;
+          }
+      }
+      >:hover{
+        color:blueviolet;
       }
   }
 }

@@ -12,9 +12,11 @@ export class NotificationsComponent implements OnInit {
   @Input() notifications: any = [];
   constructor(public sessionService: SessionService, public uS: UsersService,public router:Router) {
     this.sessionService.isLogged().subscribe(u => {
+      if(u){
       this.notifications = u.notifications;
       console.log(this.notifications)
       this.uS.usersChange.subscribe(u2=>this.notifications = u2.notifications)
+      }
     });
   }
 

@@ -11,7 +11,8 @@ import { EditRecoComponent } from "./app/edit-reco/edit-reco.component";
 
 
 export const routes:Routes =[
-    
+    {path:"",component:AuthLoginComponent},
+
     {path:"signup",component:AuthSignupComponent},
     {path:"login",component:AuthLoginComponent},
     {path:"profile/:id",component:ProfileComponent,canActivate:[isLoggedGuardService]},
@@ -22,6 +23,7 @@ export const routes:Routes =[
 
     {path:"recos/:category",component:RecoListComponent,canActivate:[isLoggedGuardService]},
     
-    {path:"",component:HomeComponent},
+    {path:"home",component:HomeComponent,canActivate:[isLoggedGuardService]},
+    { path: '**', redirectTo: '' }
 
 ]

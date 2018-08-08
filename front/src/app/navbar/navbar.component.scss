@@ -1,51 +1,105 @@
 .navbar {
-    background: linear-gradient(
-      to right,
-      rgb(8, 181, 187),
-      rgba(146, 34, 156, 0.986)
-    );
-    padding-right: 0px;
-    padding-left: 40px;
-    display:flex;
-    justify-content: space-between;
-  }
-  
+  background: linear-gradient(
+    to right,
+    rgb(8, 181, 187),
+    rgba(146, 34, 156, 0.986)
+  );
+  padding-right: 0px;
+  padding-left: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: unset;
+}
 
-.nav-item{
-    list-style: none;
-    .nav-link{
-    color:rgb(24, 22, 22);
-    }
+.nav-item {
+  list-style: none;
+  .nav-link {
+    color: rgb(24, 22, 22);
+  }
 }
 
 .navbar-brand {
-    color: white;
-    font-size: 25px;
+  color: white;
+  font-size: 25px;
+}
+.navbar-toggler {
+  border: 1px solid black;
+}
+
+.notificationsIcon {
+  color: white;
+  font-size: 20px;
+}
+
+.profile {
+  position: relative;
+  float: right;
+  > * {
+    display: inline-block;
+    vertical-align: bottom;
   }
-  .navbar-toggler {
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 2px;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.411);
+  }
+  .bell {
+    margin-right: 5px;
+  }
+}
+
+.logOptions {
+  display: flex;
+  flex-direction: row;
+  margin-right: 50px;
+  height: 98%;
+  > * {
+    //animation: borders 3s infinite;
+    margin-right: 5px;
+  }
+  li:hover{
+    border-bottom: 2px solid white;
+
+  }
+  li a{
+      color:rgb(180, 175, 175);
+  }
+  li{
+      max-height: 40px;
+  }
+}
+.full{
+    height: 100vh;
+}
+
+@keyframes borders {
+  0% {
+    border: 0;
+    border-bottom: 1px solid black;
+  }
+  25% {
+    border: 0;
+    border-left: 1px solid black;
+  }
+  50% {
+    border: 0;
+    border-top: 1px solid black;
+  }
+  75% {
+    border: 0;
+    border-right: 1px solid black;
+  }
+  100% {
     border: 1px solid black;
   }
-  
-
-  .notificationsIcon{
-      color:white;
-      font-size: 20px;
-  }
-
-  .profile{
-      position: relative;
-      float: right;
-      > *{
-          display:inline-block;
-          vertical-align: bottom;
-      }
-      img{
-          width: 50px;
-          height: 50px;
-          border-radius:2px;
-          box-shadow: 3px 3px rgba(0, 0, 0, 0.411);
-      }
-      .bell{
-          margin-right:2px;
-      }
+}
+@keyframes recoger {
+    0% {
+      height: 100vh;
+    }
+    
+    100% {
+      height: 72px;
+    }
   }

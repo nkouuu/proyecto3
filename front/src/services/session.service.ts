@@ -56,7 +56,8 @@ export class SessionService {
         let data = res.json();
 
         this.user = data;
-        this.router.navigate(["/"])
+        this.router.navigate(["/home"])
+        this.usersService.usersChange.emit(data)
         return this.user;
       }),
       catchError( e => of(this.errorHandler(e)))
@@ -68,7 +69,9 @@ export class SessionService {
       map( (res:Response) => {
         let user = res.json();
         this.user = user;
-        this.router.navigate(["/"])
+        this.router.navigate(["/home"])
+        this.usersService.usersChange.emit(user)
+
 
         return this.user;
       }),

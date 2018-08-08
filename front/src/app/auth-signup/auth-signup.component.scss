@@ -1,0 +1,32 @@
+#LoginForm {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 25%;
+    #Login {
+      border: 0;
+  
+      .form-control {
+        background: transparent;
+        border:0;
+        border-bottom: 2px solid white;
+      }
+    }
+    .panel{
+        h2{
+            color:rgba(255, 255, 255, 0.548);
+        }
+    }
+  }
+  .main-div{
+    position:relative;
+    width: 400px;
+    display:inline-block;
+}
+.container{
+    text-align: center;
+}
+
+.login-form{
+    text-align: center;
+}

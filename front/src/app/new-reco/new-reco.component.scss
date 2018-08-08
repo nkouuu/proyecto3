@@ -13,7 +13,10 @@ body {
   }
   
   .newRecoButton {
-    float: right;
+    position: relative;
+    //float: right;
+    display:inline-block;
+    left:calc(100% - 116px);
     border:1px solid blueviolet;
     border-radius: 5px;
     padding: 5px;

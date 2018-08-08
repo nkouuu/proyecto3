@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { Router } from '../../../node_modules/@angular/router';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-auth-signup',
@@ -13,6 +14,9 @@ export class AuthSignupComponent implements OnInit {
   }
 
   ngOnInit() {
+    $(".navbar").css({
+      height:"100vh"
+    })
   }
   
 }

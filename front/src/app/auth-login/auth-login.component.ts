@@ -15,4 +15,10 @@ export class AuthLoginComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  login(username,password){
+    this.sessionService.login(username,password).subscribe(u=>{
+      
+    })
+  }
 }
