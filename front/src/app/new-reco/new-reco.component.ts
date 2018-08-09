@@ -57,6 +57,7 @@ export class NewRecoComponent implements OnInit {
     });
 
     this.uploader.onSuccessItem = (item, response:any) => {
+      this.rS.getRecos().subscribe(recos=>this.rS.recosChange.emit(recos))
       this.aS.newReco(response.author, response._id);
 
       this.feedback = JSON.parse(response).message;
@@ -72,8 +73,10 @@ export class NewRecoComponent implements OnInit {
     this.uploader.onBuildItemForm = (item, form) => {
       form.append("content", content);
       form.append("category", category);
+      if(video){
       video =video.replace("watch?v=","embed/")
       form.append("video", video);
+      }
 
     };
     if(this.uploader.queue.length==0){

@@ -39,7 +39,6 @@ router.post("/", uploadCloud.single("file"), (req, res, next) => {
     updates.pictures = req.file.url;
   }
   updates.author=req.user._id
-  console.log(updates)
   Reco.create([updates])
     .then(recos => {
       console.log(recos);
