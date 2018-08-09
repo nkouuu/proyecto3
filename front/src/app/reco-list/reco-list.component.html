@@ -8,14 +8,31 @@
         <img src="{{reco.author.picture}}" alt="">
         <span>{{reco.author.username}}</span>
       </div>
-      <p>{{reco.content}}-{{reco.category}}</p>
-      <div class="picture">
-        <img src="{{reco.pictures[0]}}" alt="">
+      <p>{{reco.content}}</p>
+      <div class="more">
+        <i class="fas fa-angle-down" (click)="showMedia($event)"></i>
+        <i class="fas fa-angle-up d-none" (click)="showMedia($event)"></i>
+
+
 
       </div>
-      <div *ngIf="reco.video" class="video">
+      <div class="picture d-none" *ngIf="reco.pictures">
+        <div class="pic-i">
+            <i class="far fa-image"></i>
+
+        </div>
+
+        <img src="{{reco.pictures}}" alt="">
+
+      </div>
+      <div *ngIf="reco.video" class="video d-none">
+        <div class="video-i">
+            <i class="fab fa-youtube"></i>
+
+        </div>
         <iframe src="https://www.youtube.com/embed/UrIbxk7idYA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
+
       <div class="options">
         <div (click)="likeReco(sessionService.user._id,reco.author._id,reco._id)">
           <span *ngIf="reco.likes.length>0">{{reco.likes.length}}</span>

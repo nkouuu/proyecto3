@@ -1,3 +1,45 @@
 #LoginForm{
-    margin-top:100px;
+    margin-top:20px;
+}
+
+img {
+	border-radius: 50%;
+	margin: 0 20px;
+	width: 150px;
+	height: 150px;
+	border:2px solid #f1f1f1;
+	padding: 2px;
+	float: left;
+}
+
+.mainContainer{
+    padding-top:100px;
+    text-align: center;
+    margin-bottom:20px;
+}
+
+.name{
+    display:block;
+}
+h2{
+    width: 100%;
+    text-align: center;
+}
+.user{
+    width: 100%;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+}
+.clearfix{
+    display:flex;
+    justify-content: center;
+}
+
+.file{
+    opacity: 0;
+    max-width: 140px;
+    position: absolute;
+    left: calc(50% - 70px);
+    
 }

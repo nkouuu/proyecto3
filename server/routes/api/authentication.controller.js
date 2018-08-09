@@ -7,8 +7,8 @@ const bcrypt   = require('bcrypt');
 router.post("/login", (req, res, next) => {
   passport.authenticate('local', (err, user, info) =>  {
     if (err) { return next(err); }
-
-    if (!user) { return res.status(401).json(info); }
+    
+    if (!user) { console.log(info);return res.status(401).json(info); }
 
     req.login(user, (err) => {
       if (err) {
@@ -22,7 +22,6 @@ router.post("/login", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-  console.log(req.body)
   const { username, email, password,name } = req.body;
 
   if (!username || !password || !email || !name) {

@@ -34,17 +34,23 @@
 
       </select>
     </div>
+<div class="media">
+    <div class="form-group fileDiv">
+        <i class="far fa-image"></i>
 
-    <div class="form-group">
-
-      <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+      <input type="file" class="file" name="file" ng2FileSelect [uploader]="uploader" />
+      <div class="cover">
+        Add file
+      </div>
 
     </div>
-    <div class="form-group">
+    <div class="form-group videoDiv">
+        <i class="fab fa-youtube"></i>
 
-      <input type="text" name="video" [(ngModel)]="video" placeholder="Trailer url..." />
+      <input type="text" name="video" [(ngModel)]="video" placeholder="Video url..." />
 
     </div>
+  </div>
     <button (click)="editReco(content,category.value,video,reco._id);toggleHide(1)">Add</button>
   </form>
 </div>

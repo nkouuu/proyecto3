@@ -21,11 +21,11 @@ function configure(passport) {
         .then(user => {
           console.log(user);
           if (!user) {
-            return next(null, false, { message: "Incorrect username" });
+            return next(null, false, { message: "Incorrect username or password" });
           }
 
           if (!bcrypt.compareSync(password, user.password)) {
-            return next(null, false, { message: "Incorrect password" });
+            return next(null, false, { message: "Incorrect username or password" });
           }
 
           return next(null, user);

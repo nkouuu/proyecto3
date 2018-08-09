@@ -1,15 +1,20 @@
 
 <div class="home">
+    <div class="header">
+        <p>
+          The easiest way to find a RECOmendation
+        </p>
+      </div>
     <ul class='circle-container'>
       <li>
-          <a  [routerLink]="['/recos','Movie']">
+          <a  (click)="recoger()" [routerLink]="['/recos','Movie']">
           <div class="category movie">
             <img src="../../assets/movie.jpg" alt="">
             </div>
             </a>
       </li>
       <li>
-        <a  [routerLink]="['/recos','Anime']">
+        <a  (click)="recoger()" [routerLink]="['/recos','Anime']">
             <div class="category anime" >
               <img src="../../assets/anime.jpeg" alt="">
             </div>
@@ -17,7 +22,7 @@
           
       </li>
       <li>
-          <a  [routerLink]="['/recos','Music']">
+          <a  (click)="recoger()" [routerLink]="['/recos','Music']">
               <div class="category music" >
                 <img src="../../assets/music.jpg" alt="">
               </div>
@@ -25,7 +30,7 @@
             
         </li>
         <li>
-            <a  [routerLink]="['/recos','Travel']">
+            <a  (click)="recoger()" [routerLink]="['/recos','Travel']">
                 <div class="category travel" >
                   <img src="../../assets/travel.png" alt="">
                 </div>
@@ -33,7 +38,7 @@
               
           </li>
           <li>
-              <a  [routerLink]="['/recos','Util']">
+              <a  (click)="recoger()" [routerLink]="['/recos','Util']">
                   <div class="category util" >
                     <img src="../../assets/util.jpg" alt="">
                   </div>

@@ -29,11 +29,28 @@ export class UserRecosComponent implements OnInit {
     if(reco.likes.includes(this.sessionService.user._id)){
       type="unlike"
     }else{
-      this.aS.sendLike(liker,liked,id)
+  
       type="like"
     }
     this.rS.likeReco(type,id).subscribe(r=>{if(type=="like")this.aS.sendLike(this.sessionService.user._id,reco.author._id,reco._id)});
 
+  }
+
+  showMedia(event){
+    var e= $(event.target).parent().parent()
+    if($(event.target).hasClass("fa-angle-down")){
+      $(e).find(".picture").removeClass("d-none")
+      $(e).find(".video").removeClass("d-none")
+      $(event.target).addClass("d-none")
+      $(event.target).parent().find(".fa-angle-up").removeClass("d-none")
+
+    }else{
+      $(e).find(".picture").addClass("d-none")
+      $(e).find(".video").addClass("d-none")
+      $(event.target).addClass("d-none")
+      $(event.target).parent().find(".fa-angle-down").removeClass("d-none")
+
+    }
   }
 
 }

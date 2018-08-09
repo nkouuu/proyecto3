@@ -81,7 +81,7 @@ export class NewRecoComponent implements OnInit {
     }else{
     this.uploader.uploadAll();
     this.uploader.onCompleteItem = r => {
-
+        this.rS.getRecos().subscribe(recos=>this.rS.recosChange.emit(recos))
     };
   }
   }

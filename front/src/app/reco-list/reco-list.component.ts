@@ -4,6 +4,7 @@ import { SessionService } from "../../services/session.service";
 import { ActivatedRoute } from "../../../node_modules/@angular/router";
 import * as $ from "jquery";
 import { AlertsService } from "../../services/alertsService.service";
+import { DomSanitizer } from "../../../node_modules/@angular/platform-browser";
 
 @Component({
   selector: "app-reco-list",
@@ -17,7 +18,8 @@ export class RecoListComponent implements OnInit {
     public rS: RecosService,
     public sessionService: SessionService,
     public route: ActivatedRoute,
-    public aS:AlertsService
+    public aS:AlertsService,
+    public sanitizer: DomSanitizer
   ) {
     this.route.params.subscribe(params => {
       if (params["category"]) this.category = params["category"];
@@ -58,12 +60,30 @@ export class RecoListComponent implements OnInit {
       type="like"
     }
     this.rS.likeReco(type,id).subscribe(r=>{
-      if(type=="unlike"){
+      if(type=="like"){
         this.aS.sendLike(this.sessionService.user._id,reco.author._id,reco._id);
         
       }
     });
 
+  }
+
+
+  showMedia(event){
+    var e= $(event.target).parent().parent()
+    if($(event.target).hasClass("fa-angle-down")){
+      $(e).find(".picture").removeClass("d-none")
+      $(e).find(".video").removeClass("d-none")
+      $(event.target).addClass("d-none")
+      $(event.target).parent().find(".fa-angle-up").removeClass("d-none")
+
+    }else{
+      $(e).find(".picture").addClass("d-none")
+      $(e).find(".video").addClass("d-none")
+      $(event.target).addClass("d-none")
+      $(event.target).parent().find(".fa-angle-down").removeClass("d-none")
+
+    }
   }
 
   

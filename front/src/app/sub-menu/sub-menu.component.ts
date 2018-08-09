@@ -16,7 +16,6 @@ export class SubMenuComponent implements OnInit {
     setTimeout(()=>{
       var spans = document.getElementsByClassName("categorySpan")
       for(let i=0;i<spans.length;i++){
-        console.log(spans[i])
         if (spans[i].innerHTML == this.category) {
           $(spans[i]).parent().css({
             background: 'white',

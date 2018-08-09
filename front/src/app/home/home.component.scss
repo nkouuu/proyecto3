@@ -1,7 +1,18 @@
 .home {
-  height: calc(100vh - 56px);
+  height: calc(100vh - 80px);
   background: rgb(253, 253, 253);
-  padding-top:100px;
+  //padding-top:66px;
+  /*background-image: url("../../assets/home.jpg");
+  background-size: cover;*/
+  position:relative;
+  z-index: 10000;
+  top:80px;
+  background: transparent;
+  .header{
+    font-size:40px;
+    color:white;
+    text-align: center;
+  }
 }
 
 .category img {
@@ -93,7 +104,7 @@
 .circle-container {
   @include distribute-on-circle(5, 15em, 6em, false);
   margin: 5em auto 0;
-  border: solid 5px blueviolet;
+  border: solid 5px rgba(137, 43, 226, 0);
 }
 
 .circle-container img {

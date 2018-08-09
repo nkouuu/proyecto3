@@ -10,8 +10,10 @@ const recoSchema = new Schema({
   category: { type: String,enum:["Movie","Music","Anime","Travel","Util"], required: true },
   replies: {type:[{ type: Schema.ObjectId, ref: "Reply" }],default:[]},
   likes: {type:[{ type: Schema.ObjectId, ref: "User" }],default:[]},
-  pictures:[String],
+  pictures:String,
   video:String
+},{
+  timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 },{
     usePushEach:true
   });

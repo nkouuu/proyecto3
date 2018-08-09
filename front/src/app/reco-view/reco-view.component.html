@@ -3,7 +3,7 @@
 
 
     <section id="user">
-      <div class="user">
+      <div class="user" [routerLink]="['/profile',reco.author._id]">
         <img src={{reco.author.picture}} alt="">
         <h4>{{reco.author.username}}</h4>
         <!--<button id="followButton" *ngIf="sessionService.user._id!=reco.author._id" (click)="unfollow(sessionService.user._id,reco.author._id,$event)">Follow</button>-->
@@ -16,14 +16,42 @@
     <section id="content">
       {{reco.content}}
     </section>
-    <section id="replies">
-      <h4>Replies</h4>
-      <div *ngFor="let reply of reco.replies">
-        {{reply.content}}
+    <div class="more">
+        <i class="fas fa-angle-down" (click)="showMedia($event)"></i>
+        <i class="fas fa-angle-up d-none" (click)="showMedia($event)"></i>
+
+
+
       </div>
-      <form action="">
-        <input type="text" #content required>
-        <button (click)="newReply(this.sessionService.user._id,reco.author._id,reco._id,content.value);content.value=''">Send</button>
+      <div class="picture d-none" *ngIf="reco.pictures">
+          <div class="pic-i">
+              <i class="far fa-image"></i>
+  
+          </div>
+  
+          <img src="{{reco.pictures}}" alt="">
+  
+        </div>
+        <div *ngIf="reco.video" class="video d-none">
+          <div class="video-i">
+              <i class="fab fa-youtube"></i>
+  
+          </div>
+          <iframe src="https://www.youtube.com/embed/UrIbxk7idYA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    <section id="replies">
+      <div class="logo"><i class="far fa-comments"></i></div> 
+      <div class="replies">
+      <div *ngFor="let reply of reco.replies" class="reply">
+        <img src="{{reply.author.picture}}" alt="">
+        <span>{{reply.content}}</span>
+      </div>
+    </div>
+      <form action="" class="form">
+        <input class="input" type="text" #content placeholder="New reply..." autofocus required>
+        <button (click)="newReply(this.sessionService.user._id,reco.author._id,reco._id,content.value);content.value=''"><i class="fas fa-location-arrow"></i>
+
+        </button>
 
       </form>
     </section>

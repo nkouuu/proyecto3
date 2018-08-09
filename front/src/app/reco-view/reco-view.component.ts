@@ -18,6 +18,7 @@ export class RecoViewComponent implements OnInit {
       this.rS.getReco(params["id"]).subscribe(r=>this.reco=r)
       this.rS.recosChange.subscribe(r=>{
         var reco=r.find(e=>e._id==this.reco._id)
+        console.log("nueva reco "+reco)
         if(reco){
         this.reco=reco
         }
@@ -36,6 +37,7 @@ export class RecoViewComponent implements OnInit {
         $("#followButton").addClass("followButton")
 
        }
+       
      },100)
   }
 
@@ -71,6 +73,23 @@ export class RecoViewComponent implements OnInit {
 
   edit(){
     $(".edit").toggleClass("d-none")
+  }
+
+  showMedia(event){
+    var e= $(event.target).parent().parent()
+    if($(event.target).hasClass("fa-angle-down")){
+      $(e).find(".picture").removeClass("d-none")
+      $(e).find(".video").removeClass("d-none")
+      $(event.target).addClass("d-none")
+      $(event.target).parent().find(".fa-angle-up").removeClass("d-none")
+
+    }else{
+      $(e).find(".picture").addClass("d-none")
+      $(e).find(".video").addClass("d-none")
+      $(event.target).addClass("d-none")
+      $(event.target).parent().find(".fa-angle-down").removeClass("d-none")
+
+    }
   }
 
 }

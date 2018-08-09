@@ -1,18 +1,47 @@
 <div class="recos">
   <div *ngFor="let reco of user[section] "  class="reco">
-      <p>{{reco.content}}-{{reco.category}}</p>
-      
-      <button (click)="likeReco(sessionService.user._id,reco.author._id,reco._id)">
+      <p>{{reco.content}}</p>
+      <div class="more">
+          <i class="fas fa-angle-down" (click)="showMedia($event)"></i>
+          <i class="fas fa-angle-up d-none" (click)="showMedia($event)"></i>
+  
+  
+  
+        </div>
+        <div class="picture d-none" *ngIf="reco.pictures">
+          <div class="pic-i">
+              <i class="far fa-image"></i>
+  
+          </div>
+  
+          <img src="{{reco.pictures}}" alt="">
+  
+        </div>
+        <div *ngIf="reco.video" class="video d-none">
+          <div class="video-i">
+              <i class="fab fa-youtube"></i>
+  
+          </div>
+          <iframe src="https://www.youtube.com/embed/UrIbxk7idYA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+  
+      <div class="options">
+      <div (click)="likeReco(sessionService.user._id,reco.author._id,reco._id)">
+          <span *ngIf="reco.likes.length>0">{{reco.likes.length}}</span>
+
           <i *ngIf="reco.likes.includes(sessionService.user._id)" class="far fa-star" style="color:orange"></i>
           <i *ngIf="!reco.likes.includes(sessionService.user._id)" class="far fa-star" ></i>
   
   
-      </button>
-      <a [routerLink]="['/recos','reco',reco._id]">
-        <button>
+      </div>
+      <div [routerLink]="['/recos','reco',reco._id]">
+        <span *ngIf="reco.replies.length>0">{{reco.replies.length}}</span>
+
+        
           <i class="far fa-comments"></i>
   
-        </button>
-      </a>      
+       
+      </div> 
+      </div>     
   </div>
 </div>

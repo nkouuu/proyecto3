@@ -92,9 +92,10 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 
 
 .section1 .col2.first img {
-	border-radius: 10%;
+	border-radius: 50%;
 	margin: 0 20px;
 	width: 150px;
+	height: 150px;
 	border:2px solid #f1f1f1;
 	padding: 2px;
 	float: left;
@@ -218,7 +219,8 @@ section.section2 {
 }
 .section2 .profileinfo img {
     border-radius: 50%;
-    width: 80px;
+	width: 80px;
+	height: 80px;
     padding: 2px;
     border: 3px solid #6AAFEA;
     margin-top: -48px;
@@ -292,7 +294,8 @@ section.section2 {
 }
 @media only screen and (max-width: 450px) {
 	.container {
-    padding: 60px 5px 70px;
+	padding: 60px 5px 70px;
+	
 }
   .row2tab li {
 		width: 100%;
@@ -314,7 +317,7 @@ section.section2 {
 
 .container{
 	padding-top:120px;
-	z-index: 0;
+	z-index: 20;
 }
 .followButton{
     background: rgb(33, 178, 204);

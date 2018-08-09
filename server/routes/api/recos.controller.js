@@ -11,8 +11,8 @@ const uploadCloud = require("../../config/cloudinary.js");
 
 router.get("/", (req, res, next) => {
   Reco.find({})
-    .sort({ updatedAt: -1 })
-    .populate("replies")
+    .sort({ updated_at: -1 })
+    .populate( {path:"replies",model:"Reply",populate:{path:"author",model:"User"}})
     .populate("author")
     .then(recos => {
       res.status(200).json(recos);
@@ -21,7 +21,7 @@ router.get("/", (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
   Reco.findById(req.params.id)
-    .populate("replies")
+    .populate( {path:"replies",model:"Reply",populate:{path:"author",model:"User"}})
     .populate("author")
     .then(reco => {
       res.status(200).json(reco);
@@ -36,7 +36,7 @@ router.post("/", uploadCloud.single("file"), (req, res, next) => {
   const object = _.pickBy(req.body, (e, k) => paths.includes(k));
   var updates = _.pickBy(object, _.identity);
   if (req.file) {
-    updates.picture = req.file.url;
+    updates.pictures = req.file.url;
   }
   updates.author=req.user._id
   console.log(updates)
@@ -72,7 +72,7 @@ router.patch("/", uploadCloud.single("file"), (req, res, next) => {
   var updates = _.pickBy(object, _.identity);
   const id = req.body.id;
   if (req.file) {
-    updates.picture = req.file.url;
+    updates.pictures = req.file.url;
   }
   Reco.findByIdAndUpdate(id, updates, { new: true })
     .then(reco => {

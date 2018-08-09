@@ -20,7 +20,7 @@ interface UserObject{
 @Injectable()
 export class SessionService {
 
-
+  message:string=""
   user:any={notifications:[],followers:[]};
 
   options:object = {withCredentials:true};
@@ -46,8 +46,9 @@ export class SessionService {
 
   errorHandler(e){
     console.log('SessionServiceError')
-    console.log(e.message);
-    return e;
+    var {message} =JSON.parse(e._body)
+    this.message=message
+    return message;
   }
 
   signup(username:string, password:string,email:string,name:string): Observable<object>{

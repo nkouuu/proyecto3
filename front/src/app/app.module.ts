@@ -22,12 +22,13 @@ import { UserRecosComponent } from './user-recos/user-recos.component';
 import { UsersService } from '../services/users.service';
 import { UsersListComponent } from './users-list/users-list.component';
 import { RecoViewComponent } from './reco-view/reco-view.component';
-import {FileUploader, FileSelectDirective, FileUploadModule} from 'ng2-file-upload'
+import { FileUploadModule} from 'ng2-file-upload'
 import { AlertsService } from '../services/alertsService.service';
 import {SnotifyModule, SnotifyService, ToastDefaults} from '../../node_modules/ng-snotify';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EditRecoComponent } from './edit-reco/edit-reco.component'
+import { SafePipe } from '../pipes/safe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { EditRecoComponent } from './edit-reco/edit-reco.component'
     RecoListComponent,
     ProfileComponent,
     CategoryPipe,
+    SafePipe,
     HomeComponent,
     NewRecoComponent,
     NavbarComponent,

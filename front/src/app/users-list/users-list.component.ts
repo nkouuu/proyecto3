@@ -15,8 +15,9 @@ export class UsersListComponent implements OnInit {
   ngOnInit() {}
 
   unfollow(followerId, followedId, event) {
-    const button = $(event.path[0])
-    const text = $(event.path[0]).text();
+    const button = $(event.target)
+    const text = $(event.target).text();
+    console.log(event)
     if(text=="Unfollow"){
       this.uS.unfollowUser(followerId, followedId).subscribe(u => {
         button.text("Follow")

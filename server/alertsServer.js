@@ -13,10 +13,7 @@ const alertsServer = io => {
     });
     socket.on("follow", data => {
       //socket.emit("id",{message:"liked"})
-      if (sockets.filter(e => e.userId == data.followedId).length > 0) {
-        if (
-          sockets.filter(e => e.userId == data.followedId)[0].socket.connected
-        ) {
+      
           console.log("Notified");
           User.findByIdAndUpdate(
             data.followedId,
@@ -34,13 +31,10 @@ const alertsServer = io => {
             type: "follow",
             followerId: data.followerId
           });
-        }
-      }
-    });
+        });
     socket.on("like", data => {
       //socket.emit("id",{message:"followed"})
-      if (sockets.filter(e => e.userId == data.likedId).length > 0) {
-        if (sockets.filter(e => e.userId == data.likedId)[0].socket.connected) {
+      
           console.log("Notified");
           User.findByIdAndUpdate(
             data.likedId,
@@ -61,15 +55,10 @@ const alertsServer = io => {
             likerId: data.likerId
           });
           socket.broadcast.emit("reloadRecos", {});
-        }
-      }
-    });
+        });
     socket.on("reply", data => {
       //socket.emit("id",{message:"followed"})
-      if (sockets.filter(e => e.userId == data.repliedId).length > 0) {
-        if (
-          sockets.filter(e => e.userId == data.repliedId)[0].socket.connected
-        ) {
+      
           console.log("Notified");
           User.findByIdAndUpdate(
             data.repliedId,
@@ -85,16 +74,17 @@ const alertsServer = io => {
             },
             { new: true }
           ).then(user => {
+            socket.broadcast.emit("reloadRecos", {});
+
             socket.broadcast.emit(data.repliedId, {
               type: "reply",
               replierId: data.replierId
             });
-            socket.broadcast.emit("reloadRecos", {});
           });
-        }
-      }
-    });
+        });
     socket.on("newReco", data => {
+        socket.broadcast.emit("reloadRecos", {});
+
       User.find({}).then(users => {
         for (let i = 0; i < users.length; i++) {
           for (let j = 0; j < users[i].following.length; j++) {
@@ -121,7 +111,6 @@ const alertsServer = io => {
           }
         }
       });
-      socket.broadcast.emit("reloadRecos", {});
     });
   });
 };

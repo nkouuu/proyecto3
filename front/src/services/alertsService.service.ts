@@ -9,6 +9,8 @@ import {
 } from "../../node_modules/ng-snotify";
 import { UsersService } from "./users.service";
 import { RecosService } from "./recos.service";
+import { environment } from '../environments/environment';
+const {BASEURL} = environment;
 
 @Injectable()
 export class AlertsService {
@@ -21,7 +23,7 @@ export class AlertsService {
     public rS: RecosService
   ) {
     // Connect to websocket for chat
-    this.socket = io("recoih.herokuapp.com");
+    this.socket = io(`${BASEURL}`);
     this.socket.on("connect", () => {
       this.sessionService.isLogged().subscribe(user => {
         if (user) {
@@ -79,7 +81,6 @@ export class AlertsService {
     console.log(`Sending alert to -> ${repliedId}`);
     console.log(`follower ${replierId}`);
     console.log(`followed ${repliedId}`);
-    if (replierId != repliedId)
       this.socket.emit("reply", { replierId, repliedId, recoId });
   }
   newReco(userId, recoId) {

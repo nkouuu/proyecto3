@@ -42,19 +42,22 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(()=>{
+      $(".navbar").removeClass("full")
+
      console.log( this.sessionService.user)
       if(this.sessionService.user.following.includes(this.user._id)){
         console.log("entra2")
         $("#followButton").addClass("unfollowButton")
         $("#followButton").text("Unfollow")
+
       }
-    },50)
+    },20)
 
     
   }
 unfollow(followerId, followedId, event) {
-    const button = $(event.path[0])
-    const text = $(event.path[0]).text();
+    const button = $(event.target)
+    const text = $(event.target).text();
     if(text=="Unfollow"){
       this.uS.unfollowUser(followerId, followedId).subscribe(u => {
         button.text("Follow")
@@ -82,7 +85,7 @@ unfollow(followerId, followedId, event) {
     "border-bottom": "2px solid #f1f1f1"
     })
     
-    $(event.path[0]).css({
+    $(event.target).css({
       "border-bottom": "2px solid #6AAFEA",
       color: "#6AAFEA"
 
