@@ -35,6 +35,9 @@ export class RecoListComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(()=>{
+      $(".navbar").removeClass("full")
+    },20)
     this.route.params.subscribe(params => {
       $(".categorySpan").each(e => {
 

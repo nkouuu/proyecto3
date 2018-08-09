@@ -28,6 +28,9 @@ export class RecoViewComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(()=>{
+      $(".navbar").removeClass("full")
+    },20)
+    setTimeout(()=>{
        if(this.sessionService.user.following.includes(this.reco.author._id)){
          
 

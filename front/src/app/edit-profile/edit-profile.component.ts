@@ -27,6 +27,9 @@ export class EditProfileComponent implements OnInit {
   constructor(public uS:UsersService,public router:Router,public sessionService:SessionService) { }
 
   ngOnInit() {
+    setTimeout(()=>{
+      $(".navbar").removeClass("full")
+    },20)
     this.uploader.onSuccessItem = (item, response) => {
       this.router.navigate(['/profile',this.sessionService.user._id]);
 

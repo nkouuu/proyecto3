@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { UsersService } from '../../services/users.service';
 import { sample } from '../../../node_modules/rxjs/operators';
+import { ActivatedRoute } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import { sample } from '../../../node_modules/rxjs/operators';
 })
 export class NavbarComponent implements OnInit {
   lastUser={username:""}
-  constructor(public sessionService:SessionService,public uS:UsersService) { 
+  constructor(public sessionService:SessionService,public uS:UsersService,public route:ActivatedRoute) { 
     this.uS.usersChange.subscribe(u=>{
       if(u){
         
