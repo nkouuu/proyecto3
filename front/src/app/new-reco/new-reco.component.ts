@@ -77,11 +77,15 @@ export class NewRecoComponent implements OnInit {
 
     };
     if(this.uploader.queue.length==0){
-      this.rS.newReco(content,category,video).subscribe()
+      this.rS.newReco(content,category,video).subscribe((r)=>{
+        this.aS.newReco(this.sessionService.user._id,r._id );
+
+      })
     }else{
     this.uploader.uploadAll();
     this.uploader.onCompleteItem = r => {
         this.rS.getRecos().subscribe(recos=>this.rS.recosChange.emit(recos))
+
     };
   }
   }

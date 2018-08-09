@@ -42,6 +42,9 @@ export class AlertsService {
               case "reply":
                 this.title = "New reply!";
                 break;
+                case "newReco":
+                this.title = "New reco!";
+                break;
             }
             this.onSuccess();
             this.uS

@@ -84,6 +84,7 @@ const alertsServer = io => {
         });
     socket.on("newReco", data => {
         socket.broadcast.emit("reloadRecos", {});
+        socket.emit("reloadRecos", {});
 
       User.find({}).then(users => {
         for (let i = 0; i < users.length; i++) {

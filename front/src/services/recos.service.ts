@@ -58,7 +58,7 @@ export class RecosService {
   newReco(content,category,video){
     return this.http.post(`${BASEURL}/api/recos`,{content,category,video},this.options).pipe(
       map( (res:Response) => {
-
+        
         this.getRecos().subscribe(recos=>{
           this.recos=recos
           this.recosChange.emit(recos)
