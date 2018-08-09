@@ -1,28 +1,32 @@
+<div class="main">
+  <div class="sections">
 
-<div class="sections">
-    <a (click)="edit()"><button>Edit</button></a>
 
-<section id="user">
-    <div  class="user">
+    <section id="user">
+      <div class="user">
         <img src={{reco.author.picture}} alt="">
-      <h4>{{reco.author.username}}</h4>
-      <button id="followButton" *ngIf="sessionService.user._id!=reco.author._id" (click)="unfollow(sessionService.user._id,reco.author._id,$event)">Follow</button>
-    </div>
-  
-</section>
-<section id="content">
-{{reco.content}}
-</section>
-<section id="replies">
-  <h4>Replies</h4>
-<div *ngFor="let reply of reco.replies">
-{{reply.content}}
-</div>
-<form action="">
-  <input type="text" #content required>
-    <button (click)="newReply(this.sessionService.user._id,reco.author._id,reco._id,content.value);content.value=''">Send</button>
+        <h4>{{reco.author.username}}</h4>
+        <!--<button id="followButton" *ngIf="sessionService.user._id!=reco.author._id" (click)="unfollow(sessionService.user._id,reco.author._id,$event)">Follow</button>-->
+      </div>
+      <span (click)="edit()" class="smalltri edit" *ngIf="sessionService.user._id==reco.author._id">
 
-</form>
-</section>
-<app-edit-reco [reco]="reco" class="edit d-none"></app-edit-reco>
+        <i class="fa fa-pen"></i>
+      </span>
+    </section>
+    <section id="content">
+      {{reco.content}}
+    </section>
+    <section id="replies">
+      <h4>Replies</h4>
+      <div *ngFor="let reply of reco.replies">
+        {{reply.content}}
+      </div>
+      <form action="">
+        <input type="text" #content required>
+        <button (click)="newReply(this.sessionService.user._id,reco.author._id,reco._id,content.value);content.value=''">Send</button>
+
+      </form>
+    </section>
+    <app-edit-reco class="edit d-none"></app-edit-reco>
+  </div>
 </div>

@@ -14,8 +14,7 @@ export class NotificationsComponent implements OnInit {
     this.sessionService.isLogged().subscribe(u => {
       if(u){
       this.notifications = u.notifications;
-      console.log(this.notifications)
-      this.uS.usersChange.subscribe(u2=>this.notifications = u2.notifications)
+      this.uS.usersChange.subscribe(u2=>{if(u2)this.notifications = u2.notifications})
       }
     });
   }

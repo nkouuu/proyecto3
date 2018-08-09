@@ -38,7 +38,7 @@ export class NewRecoComponent implements OnInit {
       originalY = element.offset().top;
     console.log("elemento" + element);
     // Space between element and top of screen (when scrolling)
-    var topMargin = 20;
+    var topMargin = 120;
 
     // Should probably be set in CSS; but here just for emphasis
     element.css("position", "relative");
@@ -52,7 +52,7 @@ export class NewRecoComponent implements OnInit {
           {
             top: scrollTop < originalY ? 0 : scrollTop - originalY + topMargin
           },
-          300
+          100
         );
     });
 
@@ -76,10 +76,14 @@ export class NewRecoComponent implements OnInit {
       form.append("video", video);
 
     };
+    if(this.uploader.queue.length==0){
+      this.rS.newReco(content,category,video).subscribe()
+    }else{
     this.uploader.uploadAll();
     this.uploader.onCompleteItem = r => {
 
     };
+  }
   }
 
   toggleHide(n) {

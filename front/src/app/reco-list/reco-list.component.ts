@@ -57,7 +57,12 @@ export class RecoListComponent implements OnInit {
     }else{
       type="like"
     }
-    this.rS.likeReco(type,id).subscribe(r=>{if(type=="like")this.aS.sendLike(this.sessionService.user._id,reco.author._id,reco._id)});
+    this.rS.likeReco(type,id).subscribe(r=>{
+      if(type=="unlike"){
+        this.aS.sendLike(this.sessionService.user._id,reco.author._id,reco._id);
+        
+      }
+    });
 
   }
 

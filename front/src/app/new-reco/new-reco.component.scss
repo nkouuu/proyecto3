@@ -13,13 +13,14 @@ body {
   }
   
   .newRecoButton {
-    position: relative;
+    position: absolute;
     //float: right;
     display:inline-block;
     left:calc(100% - 116px);
     border:1px solid blueviolet;
     border-radius: 5px;
     padding: 5px;
+    margin-top:100px;
     background: rgb(24, 195, 218);
     
 

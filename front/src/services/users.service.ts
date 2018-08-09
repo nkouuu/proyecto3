@@ -48,7 +48,14 @@ export class UsersService {
   }
 
   editUser(user){
-      
+    return this.http.post(`${BASEURL}/api/users/`,{username:user.username,password:user.password,email:user.email,name:user.name},this.options).pipe(
+      map( (res:Response) => {
+        console.log(`User edited successfully`);
+        this.usersChange.emit(res.json())
+        return res.json();
+      }),
+      catchError(e => {console.log("Error editing user"); return of(e)})
+    );
   }
 
 

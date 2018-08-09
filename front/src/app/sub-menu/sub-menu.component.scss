@@ -3,15 +3,24 @@
     flex-direction: row;
     justify-content: space-between;
     vertical-align: middle;
+    position:fixed;
+    width: 100%;
+    //margin-left: 2.5%;
+    padding-top:66px;
+
 
 
     .pestaña{
+        border-bottom:1px solid blueviolet;
+
         width: 20%;
         height: 5vh;
         text-align: center;
-        border:1px solid blueviolet;
-        border-bottom-right-radius: 5px;
-        border-bottom-left-radius: 5px;
+        background: rgb(250, 248, 248);
+        color:black
+        
+        /*border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;*/
 
     }
 }

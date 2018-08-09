@@ -55,8 +55,8 @@ export class RecosService {
     );
   }
 
-  newReco(content,category){
-    return this.http.post(`${BASEURL}/api/recos`,{content,category},this.options).pipe(
+  newReco(content,category,video){
+    return this.http.post(`${BASEURL}/api/recos`,{content,category,video},this.options).pipe(
       map( (res:Response) => {
 
         this.getRecos().subscribe(recos=>{
@@ -81,8 +81,8 @@ export class RecosService {
       catchError(e => {console.log("Error getting reco"); return of(e)})
     );
   }
-  editReco(id,content,category){
-    return this.http.patch(`${BASEURL}/api/recos/${id}`,{content,category},this.options).pipe(
+  editReco(id,content,category,video){
+    return this.http.patch(`${BASEURL}/api/recos/${id}`,{id,content,category,video},this.options).pipe(
       map( (res:Response) => {
           var reco = res.json()
           this.recos.forEach(e => {
