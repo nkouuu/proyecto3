@@ -46,7 +46,6 @@ export class ProfileComponent implements OnInit {
       $(".navbar").removeClass("full")
 
       if(this.sessionService.user.following.includes(this.user._id)){
-        console.log("entra2")
         $("#followButton").addClass("unfollowButton")
         $("#followButton").text("Unfollow")
 
@@ -67,7 +66,6 @@ unfollow(followerId, followedId, event) {
 
       });
     }else if(text=="Follow"){
-      console.log("followbutton")
       this.uS.followUser(followerId, followedId).subscribe(u => {
         button.text("Unfollow")
         button.removeClass("followButton")
@@ -79,7 +77,6 @@ unfollow(followerId, followedId, event) {
     
   }
   changeSection(section:string,event){
-    console.log(event)
     $(".row2tab li").css({
       color: "#555",
     "border-bottom": "2px solid #f1f1f1"

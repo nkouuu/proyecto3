@@ -17,6 +17,7 @@ export class UserRecosComponent implements OnInit {
       this.user.recos=r.filter(e=>e.author._id==this.user._id);
 
       this.user.likes=r.filter(e=>e.likes.includes(this.user._id));
+      console.log(this.user['likes'])
     })
   }
 

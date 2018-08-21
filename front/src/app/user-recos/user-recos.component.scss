@@ -104,3 +104,17 @@
         color:blueviolet
       }
     
+      .user{
+        text-align: left;
+        color:rgb(14, 189, 212);
+        img{
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          margin-right: 5px;
+        }
+        span:hover{
+          color:rgb(91, 221, 238);
+          
+        }
+      }

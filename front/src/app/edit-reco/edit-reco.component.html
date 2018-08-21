@@ -34,11 +34,12 @@
 <div class="media">
     <div class="form-group fileDiv">
         <i class="far fa-image"></i>
-
-      <input type="file" class="file" name="file" ng2FileSelect [uploader]="uploader" />
-      <div class="cover">
-        Add file
-      </div>
+        <label class="btn btn-default">
+            Add file
+            <input class="file fileInput d-none" type="file"  name="file"  ng2FileSelect [uploader]="uploader" />
+          </label>
+          <span class="fileName"></span>
+      
 
     </div>
     <div class="form-group videoDiv">

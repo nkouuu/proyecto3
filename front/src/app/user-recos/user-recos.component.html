@@ -1,5 +1,9 @@
 <div class="recos">
   <div *ngFor="let reco of user[section] "  class="reco">
+      <!--<div class="user"  [routerLink]="['/profile',reco.author._id]">
+        <img src='{{reco.author.picture}}' alt="">
+        <span>{{reco.author.username}}</span>
+      </div>-->
       <p>{{reco.content}}</p>
       <div class="more" *ngIf="reco.pictures||reco.video">
           <i class="fas fa-angle-down" (click)="showMedia($event)"></i>
