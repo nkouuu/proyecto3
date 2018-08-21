@@ -9,7 +9,7 @@
         <span>{{reco.author.username}}</span>
       </div>
       <p>{{reco.content}}</p>
-      <div class="more">
+      <div class="more" *ngIf="reco.pictures||reco.video">
         <i class="fas fa-angle-down" (click)="showMedia($event)"></i>
         <i class="fas fa-angle-up d-none" (click)="showMedia($event)"></i>
 
@@ -30,7 +30,7 @@
             <i class="fab fa-youtube"></i>
 
         </div>
-        <iframe src="https://www.youtube.com/embed/UrIbxk7idYA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe [src]="reco.video | safe" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
 
       <div class="options">

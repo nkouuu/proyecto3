@@ -11,7 +11,7 @@ const uploadCloud = require("../../config/cloudinary.js");
 
 router.get("/", (req, res, next) => {
   Reco.find({})
-    .sort({ updated_at: -1 })
+    .sort({ created_at: -1 })
     .populate( {path:"replies",model:"Reply",populate:{path:"author",model:"User"}})
     .populate("author")
     .then(recos => {

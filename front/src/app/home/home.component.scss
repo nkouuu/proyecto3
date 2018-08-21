@@ -5,7 +5,7 @@
   /*background-image: url("../../assets/home.jpg");
   background-size: cover;*/
   position:relative;
-  z-index: 10000;
+  z-index: 20;
   top:80px;
   background: transparent;
   .header{
@@ -118,6 +118,9 @@
   }
 }
 
+.categoryName{
+  text-align: center;
+}
 
 //bounce
 

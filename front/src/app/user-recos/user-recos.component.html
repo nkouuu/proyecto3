@@ -1,7 +1,7 @@
 <div class="recos">
   <div *ngFor="let reco of user[section] "  class="reco">
       <p>{{reco.content}}</p>
-      <div class="more">
+      <div class="more" *ngIf="reco.pictures||reco.video">
           <i class="fas fa-angle-down" (click)="showMedia($event)"></i>
           <i class="fas fa-angle-up d-none" (click)="showMedia($event)"></i>
   

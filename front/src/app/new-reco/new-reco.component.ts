@@ -31,7 +31,9 @@ export class NewRecoComponent implements OnInit {
     public sessionService: SessionService,
     public aS: AlertsService,
     public router:Router
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit() {
     var element = $(".newRecoButton"),
@@ -67,6 +69,13 @@ export class NewRecoComponent implements OnInit {
     this.uploader.onErrorItem = (item, response, status, headers) => {
       this.feedback = JSON.parse(response).message;
     };
+    $('.fileInput').click(function(e:any){
+      console.log(e)
+      var fileName = e.target.files[0].name;
+      console.log("filename: "+fileName)
+      $(".fileName").text(fileName)
+  });
+  console.log()
   }
 
   newReco(content,category,video) {

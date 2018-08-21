@@ -30,7 +30,7 @@ export class SubMenuComponent implements OnInit {
             'border-left':"0"
           })
         }
-        if(spans[i].innerHTML == "Util"){
+        if(spans[i].innerHTML == "Other"){
           $(spans[i]).parent().css({
            
             'border-right':"0"
@@ -56,7 +56,7 @@ export class SubMenuComponent implements OnInit {
         'border-left':"0"
       })
     }
-    if($(event.currentTarget).text() == "Util"){
+    if($(event.currentTarget).text() == "Other"){
       $(event.currentTarget).css({
        
         'border-right':"0"

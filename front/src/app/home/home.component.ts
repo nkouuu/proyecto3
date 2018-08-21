@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,18 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router:Router) { }
 
   ngOnInit() {
     $(".navbar").addClass("full")
   }
 
-  recoger(){
+  recoger(category){
     $(".navbar").css({
           
 
-      'animation':"recoger 2s 1",
-      'animation-play-state':"running"
+      'animation':"recoger 1s 1",
+      'animation-play-state':"initial",
+      'animation-fill-mode': 'forwards'
+
     })
     $('.navbar').bind('webkitAnimationEnd', function(){
       this.style.webkitAnimationName = '';
@@ -26,6 +29,8 @@ export class HomeComponent implements OnInit {
     setTimeout(()=>{
       $(".navbar").removeClass("full")
     },100)
+    this.router.navigate(['/recos',category])
+
   }
 
 }

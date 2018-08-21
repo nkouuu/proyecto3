@@ -14,9 +14,7 @@ export class AuthSignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    $(".navbar").css({
-      height:"100vh"
-    })
+    
   }
   
 }

@@ -16,7 +16,7 @@
     <section id="content">
       {{reco.content}}
     </section>
-    <div class="more">
+    <div class="more" *ngIf="reco.pictures||reco.video">
         <i class="fas fa-angle-down" (click)="showMedia($event)"></i>
         <i class="fas fa-angle-up d-none" (click)="showMedia($event)"></i>
 

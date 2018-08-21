@@ -10,12 +10,16 @@
     .form-control {
       background: transparent;
       border:0;
-      border-bottom: 2px solid white;
+      border-bottom: 1px solid rgb(121, 113, 113);
+      border-radius: 0;
+      color:white;
+
     }
+    
   }
   .panel{
       h2{
-          color:rgba(255, 255, 255, 0.548);
+          color:white;
       }
   }
 }
@@ -33,5 +37,11 @@
     text-align: center;
 }
 button{
-    background: rgba(21, 175, 214, 0.514)
+    background: rgba(21, 175, 214, 0.267);
+    border: 1px solid rgba(137, 43, 226, 0.37);
+    width: 350px;
+}
+
+::placeholder{
+    color:rgb(179, 176, 176);
 }

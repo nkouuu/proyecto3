@@ -24,11 +24,8 @@
       <label for="cat"> Category
       </label>
       <select type="text" name="cat" class="form-control" #category required>
-        <option value="Movie" selected>Movie</option>
-        <option value="Anime">Anime</option>
-        <option value="Music">Music</option>
-        <option value="Travel">Travel</option>
-        <option value="Util">Utils</option>
+        <option  *ngFor="let category of rS.categories" value={{category}}>{{category}}</option>
+        
 
 
       </select>
@@ -37,11 +34,12 @@
       <div class="form-group fileDiv">
           <i class="far fa-image"></i>
 
-
-        <input type="file" class="file" name="file" ng2FileSelect [uploader]="uploader" />
-        <div class="cover">
-          Add file
-        </div>
+          <label class="btn btn-default">
+            Add file
+            <input class="file fileInput" type="file" class="file" name="file"  ng2FileSelect [uploader]="uploader" />
+          </label>
+          <span class="fileName"></span>
+        
       </div>
       <div class="form-group videoDiv">
           <i class="fab fa-youtube"></i>

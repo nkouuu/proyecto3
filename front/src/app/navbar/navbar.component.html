@@ -11,7 +11,7 @@
     </ul>-->
     
         <div  class="profile" *ngIf="sessionService.user" >
-          <app-notifications class="bell" *ngIf="sessionService.user" >Hola</app-notifications>
+          <!--<app-notifications class="bell" *ngIf="sessionService.user" >Hola</app-notifications>-->
           <div [routerLink]="['/profile',sessionService.user._id]">
               <img src="{{sessionService.user.picture}}" alt="" >
 

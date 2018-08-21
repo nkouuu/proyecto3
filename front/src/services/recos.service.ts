@@ -20,7 +20,7 @@ export class RecosService {
 
   recos:any=[];
   options:object = {withCredentials:true};
-  categories:any = ["Movie","Music","Anime","Travel","Util"]
+  categories:any = ["Movie","Music","Anime","Travel","Other"]
   category:any="All"
   recosChange:EventEmitter<any> = new EventEmitter()
   constructor(private http:Http,private router:Router,public sessionService:SessionService) {

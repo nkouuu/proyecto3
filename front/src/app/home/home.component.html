@@ -7,14 +7,17 @@
       </div>
     <ul class='circle-container'>
       <li>
-          <a  (click)="recoger()" [routerLink]="['/recos','Movie']">
+          <a  (click)="recoger('Movie')" >
           <div class="category movie">
-            <img src="../../assets/movie.jpg" alt="">
+            <img src="../../assets/movie.png" alt="">
             </div>
+            <!--<p class="categoryName">
+              Movies
+            </p>-->
             </a>
       </li>
       <li>
-        <a  (click)="recoger()" [routerLink]="['/recos','Anime']">
+        <a  (click)="recoger('Anime')" >
             <div class="category anime" >
               <img src="../../assets/anime.jpeg" alt="">
             </div>
@@ -22,7 +25,7 @@
           
       </li>
       <li>
-          <a  (click)="recoger()" [routerLink]="['/recos','Music']">
+          <a  (click)="recoger('Music')" >
               <div class="category music" >
                 <img src="../../assets/music.jpg" alt="">
               </div>
@@ -30,7 +33,7 @@
             
         </li>
         <li>
-            <a  (click)="recoger()" [routerLink]="['/recos','Travel']">
+            <a  (click)="recoger('Travel')" >
                 <div class="category travel" >
                   <img src="../../assets/travel.png" alt="">
                 </div>
@@ -38,9 +41,9 @@
               
           </li>
           <li>
-              <a  (click)="recoger()" [routerLink]="['/recos','Util']">
-                  <div class="category util" >
-                    <img src="../../assets/util.jpg" alt="">
+              <a  (click)="recoger('Other')" >
+                  <div class="category other" >
+                    <img src="../../assets/other.png" alt="">
                   </div>
               </a>
                 

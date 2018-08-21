@@ -24,7 +24,18 @@ export class EditProfileComponent implements OnInit {
     password: '',
   };
 
-  constructor(public uS:UsersService,public router:Router,public sessionService:SessionService) { }
+  constructor(public uS:UsersService,public router:Router,public sessionService:SessionService) { 
+    /*$('input').change(function(){
+      if (this.files && this.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var selectedImage = e.target.result;
+            $('img').attr('src', selectedImage);
+        };
+        reader.readAsDataURL(this.files[0]);
+      }
+    });*/
+  }
 
   ngOnInit() {
     setTimeout(()=>{

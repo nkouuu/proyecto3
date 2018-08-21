@@ -8,13 +8,14 @@ import { HomeComponent } from "./app/home/home.component";
 import { RecoViewComponent } from "./app/reco-view/reco-view.component";
 import { EditProfileComponent } from "./app/edit-profile/edit-profile.component";
 import { EditRecoComponent } from "./app/edit-reco/edit-reco.component";
+import { isNotLoggedGuardService } from "./services/noAuthGuard.service";
 
 
 export const routes:Routes =[
-    {path:"",component:AuthLoginComponent},
+    {path:"",component:AuthLoginComponent,canActivate:[isNotLoggedGuardService]},
 
-    {path:"signup",component:AuthSignupComponent},
-    {path:"login",component:AuthLoginComponent},
+    {path:"signup",component:AuthSignupComponent,canActivate:[isNotLoggedGuardService]},
+    {path:"login",component:AuthLoginComponent,canActivate:[isNotLoggedGuardService]},
     {path:"profile/:id",component:ProfileComponent,canActivate:[isLoggedGuardService]},
     {path:"profile/:id/edit",component:EditProfileComponent,canActivate:[isLoggedGuardService]},
 

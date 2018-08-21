@@ -29,6 +29,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EditRecoComponent } from './edit-reco/edit-reco.component'
 import { SafePipe } from '../pipes/safe.pipe';
+import { isNotLoggedGuardService } from '../services/noAuthGuard.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +64,7 @@ import { SafePipe } from '../pipes/safe.pipe';
 
     
   ],
-  providers: [SessionService,RecosService,isLoggedGuardService,UsersService,AlertsService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},SnotifyService],
+  providers: [SessionService,RecosService,isLoggedGuardService,isNotLoggedGuardService,UsersService,AlertsService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},SnotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

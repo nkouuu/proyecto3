@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
     public uS: UsersService,
     public aS:AlertsService
   ) {
+    $(".navbar").removeClass("full")
     this.route.params.subscribe(params => {
       const id = params["id"];
 
@@ -44,7 +45,6 @@ export class ProfileComponent implements OnInit {
     setTimeout(()=>{
       $(".navbar").removeClass("full")
 
-     console.log( this.sessionService.user)
       if(this.sessionService.user.following.includes(this.user._id)){
         console.log("entra2")
         $("#followButton").addClass("unfollowButton")

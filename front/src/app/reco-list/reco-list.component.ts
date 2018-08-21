@@ -25,6 +25,7 @@ export class RecoListComponent implements OnInit {
       if (params["category"]) this.category = params["category"];
     });
     this.rS.getRecos().subscribe(recos => {
+      console.log(recos)
       this.recos = recos;
 
       this.rS.recosChange.subscribe(r => {
