@@ -105,7 +105,7 @@ ul.dropdown-menu.notifications {
 .dropdown{
     list-style:none;
     color:white;
-    position: absolute;
+    position: fixed;
     z-index:30;
     left:calc(100% - 125px);
     top:40px;
